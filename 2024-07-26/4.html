@@ -1,144 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"> <!-- 문자 인코딩을 UTF-8로 설정 -->
+    <meta charset="UTF-8"> <!-- 문자 인코딩을 UTF-8로 설정하여 다양한 문자 표현 지원 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 모바일 기기에서 적절한 크기로 표시되도록 설정 -->
-    <title>회원관리 페이지</title> <!-- 브라우저 탭에 표시될 제목 -->
+    <title>회원 관리 페이지</title> <!-- 브라우저 탭에 표시될 제목 -->
+
+    <!-- 인터널 방식(내부 설정 방식) -->
     <style>
-        .add-employee-button {
-            background-color: rgb(218, 24, 24); /* 버튼 배경색을 빨간색으로 설정 */
-            color: white; /* 버튼 텍스트 색상을 흰색으로 설정 */
-            border: none; /* 버튼의 기본 테두리 제거 */
-            padding: 10px 20px; /* 버튼의 내부 여백을 상하 10px, 좌우 20px로 설정 */
-            text-align: center; /* 버튼 텍스트를 가운데 정렬 */
-            text-decoration: none; /* 버튼의 기본 텍스트 장식 제거 */
-            display: inline-block; /* 버튼을 인라인 블록으로 표시 */
-            font-size: 16px; /* 버튼 텍스트의 폰트 크기를 16px로 설정 */
-            margin-top: 10px; /* 버튼 위쪽 여백을 10px로 설정 */
-            cursor: pointer; /* 버튼에 마우스 커서를 포인터로 설정 */
-            border-radius: 5px; /* 버튼의 모서리를 둥글게 설정 */
+        /* 저장 버튼의 스타일을 정의 */
+        .saveBtn {
+            width: 100px; /* 버튼의 너비를 100px로 설정 */
+            height: 30px; /* 버튼의 높이를 30px로 설정 */
+            background-color: red; /* 버튼 배경색을 빨간색으로 설정 */
+            border: 0; /* 버튼의 기본 테두리를 제거 */
+            border-radius: 6px; /* 버튼 모서리를 둥글게 설정 */
+            box-shadow: 1px 1px 2px; /* 버튼에 그림자 효과 추가 */
         }
-        .serach {
-            font-size: 14px; /* 검색 레이블의 폰트 크기를 14px로 설정 */
+
+        /* 요소의 스타일을 정의, 주로 제목에 적용됨 */
+        .element {
+            border: 2px solid rgba(100, 100, 100, 1); /* 테두리 색상과 두께를 설정 */
+            border-radius: 4px; /* 테두리를 둥글게 설정 */
+            background-color: rgba(247, 203, 203, 0.5); /* 배경색을 반투명한 주황색으로 설정 */
+            box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.77); /* 그림자 효과 추가 */
+            text-shadow: 4px 2px 4px rgba(0, 0, 0, 0.3); /* 텍스트에 그림자 효과 추가 */
+            padding: 10px 0px; /* 내부 여백을 상하 10px, 좌우 0px로 설정 */
+            text-align: center; /* 텍스트를 가운데 정렬 */
         }
+
+        /* 사원 목록 테이블의 스타일을 정의 */
         .memListTbl {
             border: 1px solid black; /* 테이블에 검은색 1px 실선 테두리 추가 */
-            width: 80%; /* 테이블 너비를 부모 요소의 80%로 설정 */
+            width: 100%; /* 테이블 너비를 부모 요소의 100%로 설정 */
             border-collapse: collapse; /* 테이블 셀의 테두리를 병합하여 단일 테두리로 표시 */
         }
-        .memListTbl th {
-            border: 1px solid black; /* 테이블 헤더 셀에 검은색 1px 실선 테두리 추가 */
-            text-align: center; /* 테이블 헤더 텍스트를 가운데 정렬 */
-            background-color: orange; /* 테이블 헤더 배경색을 주황색으로 설정 */
+
+        /* 테이블 헤더의 스타일을 정의 */
+        .memListTbl tr th {
+            border: 1px solid black; /* 헤더 셀에 검은색 1px 실선 테두리 추가 */
         }
+
+        /* 테이블 데이터 셀의 스타일을 정의 */
         .memListTbl td {
-            border: 1px solid black; /* 테이블 데이터 셀에 검은색 1px 실선 테두리 추가 */
-            text-align: center; /* 테이블 데이터 텍스트를 가운데 정렬 */
+            border: 1px solid black; /* 데이터 셀에 검은색 1px 실선 테두리 추가 */
+            text-align: center; /* 데이터 텍스트를 가운데 정렬 */
         }
-        .img01 {
-            width: 40%; /* 이미지 너비를 테이블 셀의 40%로 설정 */
+
+        /* 댓글 테이블의 스타일을 정의 */
+        .subTbl tr td {
+            border-left: 0 solid black; /* 왼쪽 테두리 없음 */
+            border-right: 0 solid black; /* 오른쪽 테두리 없음 */
+            border-top: 0 solid black; /* 위쪽 테두리 없음 */
+            border-bottom: 1 solid black; /* 아래쪽에만 1px 실선 테두리 추가 */
         }
-        .subTbl {
-            border: 0; /* 내부 테이블에 테두리 없음 */
-            width: 100%; /* 내부 테이블 너비를 부모 셀의 100%로 설정 */
-            border-collapse: collapse; /* 테이블 셀의 테두리를 병합하여 단일 테두리로 표시 */
-        }
-        .comment-input {
-            width: 30%; /* 댓글 입력란의 너비를 30%로 설정 */
-        }
-        .author-input {
-            width: 10%; /* 작성자 입력란의 너비를 10%로 설정 */
+
+        /* 컨테이너의 스타일을 정의 */
+        div.container {
+            margin: auto; /* 컨테이너를 가운데 정렬 */
+            max-width: 800px; /* 최대 너비를 800px로 설정 */
+            min-width: 600px; /* 최소 너비를 600px로 설정 */
         }
     </style>
 </head>
 <body>
-    <label for="fname">이름</label> <!-- 이름 입력란에 대한 레이블 -->
-    <input type="text" id="uname" name="uname" placeholder="홍길동"> <!-- 이름을 입력할 텍스트 필드 -->
-    <br>
-
-    <label for="fdepartment">부서</label> <!-- 부서 입력란에 대한 레이블 -->
-    <input type="text" id="udepartment" name="udepartment" placeholder="개발"> <!-- 부서를 입력할 텍스트 필드 -->
-    <br>
-
-    <label for="fposition">직책</label> <!-- 직책 입력란에 대한 레이블 -->
-    <input type="text" id="uposition" name="uposition" placeholder="대리"> <!-- 직책을 입력할 텍스트 필드 -->
-    <br>
-
-    <label for="fphoto">사진</label> <!-- 사진 업로드 입력란에 대한 레이블 -->
-    <input type="file" id="uphoto" name="uphoto" accept="image/*"> <!-- 이미지만 선택할 수 있는 파일 업로드 필드 -->
-    <span class="file-name" id="file-name"></span> <!-- 파일 이름을 표시할 영역 -->
-    <br><br>
-
-    <button class="add-employee-button">새 사원 추가</button> <!-- 사원 추가 버튼 -->
-    <hr>
-
-    <button class="select-deleate">선택삭제</button> <!-- 선택된 항목 삭제 버튼 -->
-    <label for="search" class="serach">| 검색:</label> <!-- 검색 레이블 -->
-    <select id="search"> <!-- 검색 조건을 선택할 드롭다운 메뉴 -->
-        <option value="name">이름</option>
-    </select>
-    <input type="text" id="uname2" name="uname2"> <!-- 검색할 이름을 입력할 텍스트 필드 -->
-    <br>
-
-    <table class="memListTbl"> <!-- 사원 목록을 표시할 테이블 -->
-        <tr>
-            <th>
-                <input type="checkbox" name="" id=""> <!-- 전체 선택 체크박스 -->
-            </th>
-            <th>번호</th> <!-- 사원 번호 열 제목 -->
-            <th>사진</th> <!-- 사원 사진 열 제목 -->
-            <th>사원명</th> <!-- 사원명 열 제목 -->
-            <th>부서</th> <!-- 부서 열 제목 -->
-            <th>직급</th> <!-- 직급 열 제목 -->
-            <th>수정</th> <!-- 수정 열 제목 -->
-            <th>삭제</th> <!-- 삭제 열 제목 -->
-        </tr>
-        <tr>
-            <td rowspan="2"><input type="checkbox" name="" id=""></td> <!-- 각 사원 행에 대한 체크박스 (2행을 차지함) -->
-            <td rowspan="2">1043</td> <!-- 사원 번호 (2행을 차지함) -->
-            <td>
-                <img src="img01.png" alt="pic" class="img01"> <!-- 사원 사진 -->
-            </td>
-            <td>홍길동</td> <!-- 사원명 -->
-            <td>개발</td> <!-- 부서 -->
-            <td>대리</td> <!-- 직급 -->
-            <td rowspan="2"><button>Edit</button></td> <!-- 수정 버튼 (2행을 차지함) -->
-            <td rowspan="2"><button>Delete</button></td> <!-- 삭제 버튼 (2행을 차지함) -->
-        </tr>
-        <tr>
-            <td colspan="4"> <!-- 댓글 관련 내용을 담는 셀 (4열을 차지함) -->
-                <table class="subTbl" width="100%" cellspacing="0"> <!-- 댓글을 표시할 내부 테이블 -->
+    <!-- 페이지 컨테이너 -->
+    <div class="container">
+        <!-- 제목 영역 -->
+        <div>
+            <h1 class="element">회원 관리 페이지</h1> <!-- 제목을 중앙 정렬 및 스타일 적용 -->
+        </div>
+        <!-- 입력 폼 영역 -->
+        <div>
+            <form action=""> <!-- 폼 제출 시 빈 URL로 전송 (서버와 연결되면 실제 URL로 변경 필요) -->
+                <table class="memberForm"> <!-- 입력 폼을 테이블로 구성 -->
                     <tr>
-                        <td width="10px">번호</td> <!-- 댓글 번호 열 제목 -->
-                        <td>댓글내용</td> <!-- 댓글 내용 열 제목 -->
-                        <td>작성자</td> <!-- 작성자 열 제목 -->
-                        <td>수정</td> <!-- 수정 열 제목 -->
-                        <td>삭제</td> <!-- 삭제 열 제목 -->
+                        <th><label for="name">이름</label></th> <!-- 이름 입력란 레이블 -->
+                        <td><input type="text" 
+                        name="" id="name" placeholder="성명을 입력 하세요"></td> <!-- 이름 입력 필드 -->
                     </tr>
                     <tr>
-                        <td>1</td> <!-- 댓글 번호 -->
-                        <td class="comment-input">멋진 사진입니다.</td> <!-- 댓글 내용 -->
-                        <td class="author-input">박문수</td> <!-- 작성자 -->
-                        <td>수정</td> <!-- 수정 버튼 -->
-                        <td>삭제</td> <!-- 삭제 버튼 -->
+                        <th><label for="dept">부서</label></th> <!-- 부서 입력란 레이블 -->
+                        <td><input type="text" 
+                        name="" id="dept" value="경영지원"></td> <!-- 부서 입력 필드 (기본값: '경영지원') -->
                     </tr>
                     <tr>
-                        <td>2</td> <!-- 댓글 번호 -->
-                        <td class="comment-input">좋아요^^ 퍼가요~</td> <!-- 댓글 내용 -->
-                        <td class="author-input">일지매</td> <!-- 작성자 -->
-                        <td>수정</td> <!-- 수정 버튼 -->
-                        <td>삭제</td> <!-- 삭제 버튼 -->
+                        <th><label for="rank">직책</label></th> <!-- 직책 입력란 레이블 -->
+                        <td><input type="text" 
+                        name="" id="rank" value="과장"></td> <!-- 직책 입력 필드 (기본값: '과장') -->
                     </tr>
                     <tr>
-                        <td colspan="5"> <!-- 댓글 추가를 위한 입력란 (5열을 차지함) -->
-                            댓글 <input type="text" class="comment-input"> <!-- 댓글 입력란 -->
-                            작성자 <input type="text" class="author-input"> <!-- 작성자 입력란 -->
-                            <button>댓글입력</button> <!-- 댓글 입력 버튼 -->
+                        <th><label for="gender">성별</label></th> <!-- 성별 선택 레이블 -->
+                        <td>
+                            <input type="radio" 
+                            name="gender" id="gender"> 남성 <!-- 성별 라디오 버튼 (남성) -->
+                            <input type="radio" 
+                            name="gender" id="gender" checked> 여성 <!-- 성별 라디오 버튼 (여성, 기본값) -->
+                            <input type="radio" 
+                            name="gender" id="gender"> 기타 <!-- 성별 라디오 버튼 (기타) -->
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><label for="favorit">관심</label></th> <!-- 관심 분야 선택 레이블 -->
+                        <td>
+                            <input type="checkbox" 
+                            name="favorit" id="favorit" value="sw개발" checked> SW개발 <!-- 관심 분야 체크박스 (SW개발, 기본값) -->
+                            <input type="checkbox" 
+                            name="favorit" id="favorit" value="영업" checked> 영업 <!-- 관심 분야 체크박스 (영업, 기본값) -->
+                            <input type="checkbox" 
+                            name="favorit" id="favorit" value="독서"> 독서 <!-- 관심 분야 체크박스 (독서) -->
+                            <input type="checkbox" 
+                            name="favorit" id="favorit" value="직업교육"> 직업교육 <!-- 관심 분야 체크박스 (직업교육) -->
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><label for="photo">사진</label></th> <!-- 사진 업로드 레이블 -->
+                        <td><input type="file" name="" id="photo"></td> <!-- 사진 파일 업로드 필드 -->
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="submit" class="saveBtn" value="SAVE" style=""> <!-- 제출 버튼 (저장) -->
                         </td>
                     </tr>
                 </table>
-            </td>
-        </tr>
-    </table>
+             </form>
+        </div>
+        <hr> <!-- 구분선 -->
+
+        <!-- 목록 영역 -->
+        <div>
+            <p>
+                검색 <input type="text"> <button>검색</button> <!-- 검색 입력 필드 및 버튼 -->
+            </p>
+            <table class="memListTbl"> <!-- 사원 목록 테이블 -->
+                <tr>
+                    <th>
+                        <input type="checkbox" name="" id=""> <!-- 전체 선택 체크박스 -->
+                    </th>
+                    <th>번호</th> <!-- 열 제목: 번호 -->
+                    <th>사진</th> <!-- 열 제목: 사진 -->
+                    <th>사원명</th> <!-- 열 제목: 사원명 -->
+                    <th>부서</th> <!-- 열 제목: 부서 -->
+                    <th>직급</th> <!-- 열 제목: 직급 -->
+                    <th>수정</th> <!-- 열 제목: 수정 -->
+                    <th>삭제</th> <!-- 열 제목: 삭제 -->
+                </tr>
+                <tr>
+                    <td rowspan="2"><input type="checkbox" name="" id=""></td> <!-- 각 사원에 대한 체크박스 (2행을 차지함) -->
+                    <td rowspan="2">1043</td> <!-- 사원 번호 (2행을 차지함) -->
+                    <td>
+                        <img src="img01.png" alt="사원1의 사진"> <!-- 사원 사진 -->
+                    </td>
+                    <td>홍길동</td> <!-- 사원명 -->
+                    <td>개발</td> <!-- 부서 -->
+                    <td>대리</td> <!-- 직급 -->
+                    <td rowspan="2"><button>Edit</button></td> <!-- 수정 버튼 (2행을 차지함) -->
+                    <td rowspan="2"><button>Delete</button></td> <!-- 삭제 버튼 (2행을 차지함) -->
+                </tr>
+                <tr>
+                    <td colspan="4"> <!-- 댓글 영역을 위한 셀 (4열을 차지함) -->
+                        <table class="subTbl" width="100%" cellspacing="0"> <!-- 댓글을 위한 서브 테이블 -->
+                            <tr>
+                                <td width="10px">번호</td> <!-- 댓글 번호 열 제목 -->
+                                <td>댓글내용</td> <!-- 댓글 내용 열 제목 -->
+                                <td>작성자</td> <!-- 작성자 열 제목 -->
+                                <td>수정</td> <!-- 수정 열 제목 -->
+                                <td>삭제</td> <!-- 삭제 열 제목 -->
+                            </tr>
+                            <tr>
+                                <td>1</td> <!-- 댓글 번호 -->
+                                <td>멋진 사진입니다.</td> <!-- 댓글 내용 -->
+                                <td>박문수</td> <!-- 작성자 -->
+                                <td>수정</td> <!-- 수정 버튼 -->
+                                <td>삭제</td> <!-- 삭제 버튼 -->
+                            </tr>
+                            <tr>
+                                <td>2</td> <!-- 댓글 번호 -->
+                                <td>좋아요^^ 퍼가요~</td> <!-- 댓글 내용 -->
+                                <td>일지매</td> <!-- 작성자 -->
+                                <td>수정</td> <!-- 수정 버튼 -->
+                                <td>삭제</td> <!-- 삭제 버튼 -->
+                            </tr>
+                            <tr>
+                                <td colspan="5"> <!-- 댓글 입력 영역 (5열을 차지함) -->
+                                    댓글 <input type="text"> <!-- 댓글 입력 필드 -->
+                                    작성자 <input type="text"> <!-- 작성자 입력 필드 -->
+                                    <button>댓글입력</button> <!-- 댓글 입력 버튼 -->
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
 </body>
 </html>
