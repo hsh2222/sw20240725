@@ -5,12 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HTML CSS Text</title>
     <style>
-        div{
+        /* 모든 div 요소의 높이를 뷰포트 높이와 같게 설정 */
+        div {
             height: 100vh;
         }
-        div[name=n1] { background-color: yellow;}
-        div[name=n3] { background-color: yellow;}
-        div[name=n2], div[name=n2] {background-color: brown;}
+        /* name 속성이 n1인 div 요소의 배경색을 노란색으로 설정 */
+        div[name=n1] {
+            background-color: yellow;
+        }
+        /* name 속성이 n3인 div 요소의 배경색을 노란색으로 설정 */
+        div[name=n3] {
+            background-color: yellow;
+        }
+        /* name 속성이 n2인 div 요소의 배경색을 갈색으로 설정 */
+        div[name=n2], 
+        div[name=n2] {
+            background-color: brown;
+        }
     </style>
 </head>
 <body>
@@ -18,16 +29,23 @@
     <hr>
     <table bgColor="gray" border="0" cellspacing="1" width="400">
         <tr bgColor="white">
+            <!-- 첫 번째 열의 첫 번째 셀, 3행을 병합 -->
             <td rowspan="3">a1</td>
+            <!-- 두 번째 셀 -->
             <td>a2</td>
+            <!-- 세 번째 셀 -->
             <td>a3</td>
+            <!-- 네 번째 셀, 3행을 병합 -->
             <td rowspan="3">a4</td>
         </tr>
         <tr bgColor="white">
+            <!-- 두 번째 행, 두 번째 셀과 세 번째 셀을 병합 -->
             <td colspan="2">b2</td>
         </tr>
         <tr bgColor="white">
+            <!-- 세 번째 행, 두 번째 셀 -->
             <td>c2</td>
+            <!-- 세 번째 셀 -->
             <td>c3</td>
         </tr>
     </table>
@@ -47,15 +65,19 @@
     <hr>
     <p>
         아이디 경로<br>
-        <!-- 상대경로 링크 지정  -->
+        <!-- 아이디 경로 링크 지정 -->
         <a href="#n1">N1</a>
         <a href="#n2">N2</a>
         <a href="#n3">N3</a>
         <a href="#n4">N4</a>
     </p>
+    <!-- name과 id 속성이 n1인 div 요소, 배경색은 노란색 -->
     <div name="n1" id="n1">N1</div>
+    <!-- name과 id 속성이 n2인 div 요소, 배경색은 갈색 -->
     <div name="n2" id="n2">N2</div>
+    <!-- name과 id 속성이 n3인 div 요소, 배경색은 노란색 -->
     <div name="n3" id="n3">N3</div>
+    <!-- name과 id 속성이 n4인 div 요소, 배경색은 기본값 (변경 없음) -->
     <div name="n4" id="n4">N4</div>
 </body>
 </html>
