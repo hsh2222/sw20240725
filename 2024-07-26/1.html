@@ -4,14 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HTML CSS Text</title>
+    <style>
+        div{
+            height: 100vh;
+        }
+        div[name=n1] { background-color: yellow;}
+        div[name=n3] { background-color: yellow;}
+        div[name=n2], div[name=n2] {background-color: brown;}
+    </style>
 </head>
 <body>
     <h1>홍차</h1>
     <hr>
-    <!--table>tr*3>td*4 약어 사용해서 제작-->
-    <table bgColor="gray" border="1" cellspacing="1" width="400">
+    <table bgColor="gray" border="0" cellspacing="1" width="400">
         <tr bgColor="white">
-            <!--Alt + Shift + 드래그하면 td칸 한번에 입력 가능-->
             <td rowspan="3">a1</td>
             <td>a2</td>
             <td>a3</td>
@@ -21,13 +27,35 @@
             <td colspan="2">b2</td>
         </tr>
         <tr bgColor="white">
-            <td>c1</td>
             <td>c2</td>
+            <td>c3</td>
         </tr>
     </table>
     <hr>
-    <a href="http://www.naver.com">네이버</a>
-    <a href="http://google.com">구글</a>
-    <a herf="../2024-07-25/1/index.html">hello</a>
+    <p>
+        절대경로<br>
+        <!-- 절대경로 링크 지정 -->
+        <a href="http://www.naver.com">네이버</a>
+        <a href="http://google.com">구글</a>
+    </p>
+    <hr>
+    <p>
+        상대경로<br>
+        <!-- 상대경로 링크 지정 -->
+        <a href="../2024-07-25/1/index.html">hello</a>
+    </p>
+    <hr>
+    <p>
+        아이디 경로<br>
+        <!-- 상대경로 링크 지정 -->
+        <a href="#n1">N1</a>
+        <a href="#n2">N2</a>
+        <a href="#n3">N3</a>
+        <a href="#n4">N4</a>
+    </p>
+    <div name="n1" id="n1">N1</div>
+    <div name="n2" id="n2">N2</div>
+    <div name="n3" id="n3">N3</div>
+    <div name="n4" id="n4">N4</div>
 </body>
 </html>
