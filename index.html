@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Han Sang Hun's Portfolio</title>
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* 바디 */
+  body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    background-color: #ffffff;
+  }
+
+ /* 메인 */
+  .container {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+  }
+
+ /* 왼쪽 섹션  */
+  .left-section {
+    background-color: #29088A;
+    color: #fff;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 15em;
+  }
+  
+/* 프로필 이미지 */
+  .left-section img {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border: 4px solid #fff;
+    margin-bottom: 40px;
+  }
+
+/* 메뉴 */
+  .menu {
+    list-style-type: none;
+    width: 100%;
+    text-align: center;
+  }
+
+ /* 메뉴 항목 */
+  .menu li {
+    margin: 10px 0;
+  }
+
+  .menu a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    display: block;
+    padding: 13px;
+    transition: background-color 0.3s;
+  }
+
+  .menu a:hover {
+    background-color: #8258FA;
+  }
+
+/* 오른쪽 섹션 */
+  .right-section {
+    flex-grow: 1;
+    padding: 30px;
+    padding-top: 15em;
+    padding-left: 5em;
+    overflow-y: auto;
+  }
+
+/* 이름, 인사말  */
+  .right-section h1 {
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  .right-section .name {
+    font-size: 80px; /* Increased size */
+    font-weight: bold;
+  }
+
+  .right-section .info {
+    font-size: 20px;
+    color: #bbb; /* Blurred effect with light grey color */
+    margin-bottom: 25px;
+  }
+
+  .right-section .greeting {
+    font-size: 20px;
+    color: #333; /* Regular text color */
+    margin-bottom: 20px;
+  }
+
+  .info-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .info-container img {
+    width: 20px;
+    height: 20px;
+    margin-right: 7px; 
+  }
+
+  .info-text { 
+    font-size: 18px; 
+    color: #bbb; 
+  }
+
+ /* 소셜 링크 */
+  .social-links {
+      position: absolute; 
+      bottom: 50; 
+      width: 100%; 
+      text-align: left; 
+      padding: 10px 0; 
+    }
+
+/*  소셜 링크 이미지 */
+    .social-links img {
+      width: 100px; 
+      height: 100px; 
+      margin-right: 15px; 
+    }
+
+  .social-text {
+    display: block; 
+    color: #fff; 
+    text-align: center; 
+    font-size: 0.8em; 
+    margin-top: 5px; 
+    }
+
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="left-section">
+    <img src="2.jpg" alt="Profile Image">
+  
+    <!-- 네비게이션 메뉴 -->  
+    <ul class="menu">
+      <li><a href="index.html">HOME</a></li> 
+      <li><a href="자기소개.html">INTERESTS</a></li>
+      <li><a href="진로및계획.html">COURSE</a></li>
+    </ul>
+  </div>
+
+  <!-- 내 정보 -->
+  <div class="right-section">
+    <div class="name">HAN SANG HUN</div>
+    <div class="info-container">
+      <img src="7.jpg" alt="Birthdate Icon">
+      <span class="info-text">2000.03.06</span>
+    </div>
+    <div class="info-container">
+      <img src="5.jpg" alt="Phone Icon">
+      <span class="info-text">+(82) 10-1111-1111</span>
+    </div>
+    <div class="info-container">
+      <img src="6.jpg" alt="Email Icon">
+      <span class="info-text">tkdgnsgks566245@naver.com</span>
+    </div>
+
+  <!-- 인사말 -->
+  <div class="greeting">
+    <br>   
+    <b>" 안녕하세요."</b> 
+    <br> 
+    <br>20191110 한상훈의 개인 웹페이지에 오신 것을 환영합니다. 
+    <br>이곳은 그 여정을 담은 공간으로, 꿈에 한 발짝 더 다가가기 위한 기록입니다.
+    <br>
+    <br>
+    <br> 좌측의 메뉴를 사용하여 다른페이지로 이동 할 수 있습니다. 
+    <br> 위에서부터 순서대로 <strong> Home(시작페이지,자기소개), INTERSTS(취미), COURSE(진로 및 계획)</strong> 입니다.
+    <br> 아래의 이미지를 누르면 저의 블로그와 GitHub페이지로 이동하게 됩니다.  <br>  <br> 
+    </div> 
+    
+    
+ <!-- 소셜 링크 -->
+ <div class="social-links">
+  <a href="https://blog.naver.com/hsh5662645/" target="_blank">
+    <img src="3.jpg" alt="blog-icon">
+  </a>
+  <a href="https://github.com/hsh2222/sw20240725/" target="_blank">
+    <img src="4.jpg" alt="GitHub" class="github-icon">
+  </a>
+</div>
+
+  </div>
+</div>
+
+</body>
+</html>

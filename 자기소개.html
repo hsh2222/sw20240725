@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Han Sang Hun's Portfolio</title>
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* 바디 */
+  body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    background-color: #ffffff;
+  }
+
+ /* 메인 */
+  .container {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+  }
+
+ /* 왼쪽 섹션  */
+  .left-section {
+    background-color: #29088A;
+    color: #fff;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 15em;
+  }
+  
+/* 프로필 이미지 */
+  .left-section img {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border: 4px solid #fff;
+    margin-bottom: 40px;
+  }
+
+/* 메뉴 */
+  .menu {
+    list-style-type: none;
+    width: 100%;
+    text-align: center;
+  }
+
+ /* 메뉴 항목 */
+  .menu li {
+    margin: 10px 0;
+  }
+
+  .menu a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    display: block;
+    padding: 13px;
+    transition: background-color 0.3s;
+  }
+
+  .menu a:hover {
+    background-color: #8258FA;
+  }
+
+/* 오른쪽 섹션 */
+  .right-section {
+    flex-grow: 1;
+    padding: 30px;
+    padding-top: 20em;
+    padding-left: 10em;
+    overflow-y: auto;
+  }
+
+  .right-section h1 {
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  .right-section .name {
+    font-size: 80px;
+    font-weight: bold;
+  }
+
+  .right-section .info {
+    font-size: 20px;
+    color: #bbb;
+    margin-bottom: 25px;
+  }
+
+  .right-section .greeting {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  .info-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .info-container img {
+    width: 20px;
+    height: 20px;
+    margin-right: 7px;
+  }
+
+  .info-text {
+    font-size: 18px;
+    color: #bbb;
+  }
+
+  .social-links {
+    position: absolute;
+    bottom: 50;
+    width: 100%;
+    text-align: left;
+    padding: 10px 0;
+  }
+
+  .social-links img {
+    width: 100px;
+    height: 100px;
+    margin-right: 15px;
+  }
+
+  .github-icon {
+    width: 90px;
+    height: 90px;
+  }
+
+  
+
+ /* 이미지 스타일 */
+.top-image {
+    position: absolute;
+    top: 20px; 
+    left: 55%;
+    transform: translateX(-50%); 
+    z-index: -1;
+    width: 100%; 
+    max-width: 720px; 
+    height: auto; 
+}
+
+  .hobby-section {
+    margin-top: 50px;
+  }
+
+  .hobby {
+    margin-bottom: 30px;
+  }
+
+  .hobby img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    border-radius: 10px;
+  }
+
+  .hobby-description {
+    color: #333;
+    font-size: 18px;
+    line-height: 1.5;
+    margin-top: 10px;
+  }
+
+  .hobby-title {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: bold;
+  }
+
+  .hobby-caption {
+    font-size: 14px;
+    color: #888;
+    margin-top: 5px;
+  }
+
+  .right-section {
+    padding-top: 200px; 
+  }
+
+  @media screen and (max-width: 768px) {
+    .left-section, .right-section {
+      width: 100%;
+      padding-top: 60px;
+    }
+
+    .right-section {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .top-image {
+      left: 50%;
+      width: 90%;
+      top: 10px;
+    }
+
+    .container {
+      flex-direction: column;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <img class="top-image" src="8.jpg" alt="Top Image">
+  <div class="left-section">
+    <img src="2.jpg" alt="Profile Image">
+    
+    <ul class="menu">
+      <li><a href="index.html">HOME</a></li> 
+      <li><a href="자기소개.html">INTERESTS</a></li>
+      <li><a href="진로및계획.html">COURSE</a></li>
+    </ul>
+  </div>
+  <div class="right-section">
+    <h1>" 저의 취미는... "</h1>
+    <div class="hobby-section">
+      <div class="hobby">
+        <img src="soccer.jpg" alt="Soccer">
+        <p class="hobby-title">축구 관람</p>
+        <p class="hobby-description">친구들과 함께 축구 경기를 직관하는 것은 제 삶의 큰 즐거움입니다. 경기를 보면서 선수들의 전략과 스킬에 대해 배우고, 특히 경기가 펼쳐지는 그 순간의 긴장감을 관중과 함께 즐깁니다.</p>
+        <p class="hobby-caption">자주 직관하러간 대구fc 스타디움</p>
+      </div>
+      <div class="hobby">
+        <img src="Travel.jpg" alt="Travel">
+        <p class="hobby-title">여행</p>
+        <p class="hobby-description">저는 다양한 도시의 문화와 풍경을 직접 보고 느끼는 여행을 즐깁니다. 이를 통해 친구들과 추억을 만드는 것이 저의 큰 행복입니다.</p>
+        <p class="hobby-caption">최근에 간 부산 해운대의 야경</p>
+      </div>
+  
+   
+   
+  </div>
+</div>
+</body>
+</html>
