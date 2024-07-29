@@ -1,211 +1,210 @@
-<!DOCTYPE html>
-<html lang="ko">
+<!DOCTYPE html> <!-- 문서 타입 선언, HTML5 문서임을 명시 -->
+<html lang="ko"> <!-- 문서의 언어를 한국어로 설정 -->
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Han Sang Hun's Portfolio</title>
+<meta charset="UTF-8"> <!-- 문서의 문자 인코딩을 UTF-8로 설정 -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 뷰포트 설정, 모바일 장치에서의 레이아웃 조정 -->
+<title>Han Sang Hun's Portfolio</title> <!-- 웹 페이지의 제목 -->
 <style>
   * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+    box-sizing: border-box; /* 모든 요소의 박스 모델을 border-box로 설정 */
+    margin: 0; /* 모든 요소의 기본 여백 제거 */
+    padding: 0; /* 모든 요소의 기본 패딩 제거 */
   }
 
-  /* 바디 */
+  /* 바디 스타일 */
   body {
-    font-family: 'Arial', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
-    background-color: #ffffff;
+    font-family: 'Arial', sans-serif; /* 글꼴 설정 */
+    display: flex; /* 플렉스 박스로 설정 */
+    justify-content: center; /* 수평 중앙 정렬 */
+    align-items: flex-start; /* 수직 상단 정렬 */
+    min-height: 100vh; /* 최소 높이를 뷰포트 높이로 설정 */
+    background-color: #ffffff; /* 배경색을 흰색으로 설정 */
   }
 
- /* 메인 */
+  /* 메인 컨테이너 스타일 */
   .container {
-    display: flex;
-    width: 100%;
-    min-height: 100vh;
+    display: flex; /* 플렉스 박스 설정 */
+    width: 100%; /* 너비를 100%로 설정 */
+    min-height: 100vh; /* 최소 높이를 뷰포트 높이로 설정 */
   }
 
- /* 왼쪽 섹션  */
+  /* 왼쪽 섹션 스타일 */
   .left-section {
-    background-color: #29088A;
-    color: #fff;
-    width: 200px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 15em;
+    background-color: #29088A; /* 배경색 설정 */
+    color: #fff; /* 텍스트 색상 설정 */
+    width: 200px; /* 너비 설정 */
+    display: flex; /* 플렉스 박스 설정 */
+    flex-direction: column; /* 수직 정렬 */
+    align-items: center; /* 중앙 정렬 */
+    padding-top: 15em; /* 상단 패딩 설정 */
   }
   
-/* 프로필 이미지 */
+  /* 프로필 이미지 스타일 */
   .left-section img {
-    border-radius: 50%;
-    width: 120px;
-    height: 120px;
-    object-fit: cover;
-    border: 4px solid #fff;
-    margin-bottom: 40px;
+    border-radius: 50%; /* 원형으로 자르기 */
+    width: 120px; /* 너비 설정 */
+    height: 120px; /* 높이 설정 */
+    object-fit: cover; /* 이미지 크기 조정 */
+    border: 4px solid #fff; /* 테두리 설정 */
+    margin-bottom: 40px; /* 하단 여백 설정 */
   }
 
-/* 메뉴 */
+  /* 메뉴 스타일 */
   .menu {
-    list-style-type: none;
-    width: 100%;
-    text-align: center;
+    list-style-type: none; /* 리스트 스타일 제거 */
+    width: 100%; /* 너비 설정 */
+    text-align: center; /* 중앙 정렬 */
   }
 
- /* 메뉴 항목 */
+  /* 메뉴 항목 스타일 */
   .menu li {
-    margin: 10px 0;
+    margin: 10px 0; /* 상하 여백 설정 */
   }
 
+  /* 메뉴 링크 스타일 */
   .menu a {
-    text-decoration: none;
-    color: #fff;
-    font-weight: bold;
-    display: block;
-    padding: 13px;
-    transition: background-color 0.3s;
+    text-decoration: none; /* 밑줄 제거 */
+    color: #fff; /* 텍스트 색상 설정 */
+    font-weight: bold; /* 텍스트 두께 설정 */
+    display: block; /* 블록 요소로 설정 */
+    padding: 13px; /* 패딩 설정 */
+    transition: background-color 0.3s; /* 배경색 전환 효과 */
   }
 
+  /* 메뉴 링크 호버 스타일 */
   .menu a:hover {
-    background-color: #8258FA;
+    background-color: #8258FA; /* 호버 시 배경색 설정 */
   }
 
-/* 오른쪽 섹션 */
+  /* 오른쪽 섹션 스타일 */
   .right-section {
-    flex-grow: 1;
-    padding: 30px;
-    padding-top: 15em;
-    padding-left: 5em;
-    overflow-y: auto;
+    flex-grow: 1; /* 가용 공간 채우기 */
+    padding: 30px; /* 패딩 설정 */
+    padding-top: 15em; /* 상단 패딩 설정 */
+    padding-left: 5em; /* 왼쪽 패딩 설정 */
+    overflow-y: auto; /* 수직 스크롤 설정 */
   }
 
-/* 이름, 인사말  */
+  /* 이름, 인사말 스타일 */
   .right-section h1 {
-    color: #333;
-    margin-bottom: 20px;
+    color: #333; /* 텍스트 색상 설정 */
+    margin-bottom: 20px; /* 하단 여백 설정 */
   }
 
   .right-section .name {
-    font-size: 80px; /* Increased size */
-    font-weight: bold;
+    font-size: 80px; /* 폰트 크기 설정 */
+    font-weight: bold; /* 폰트 두께 설정 */
   }
 
   .right-section .info {
-    font-size: 20px;
-    color: #bbb; /* Blurred effect with light grey color */
-    margin-bottom: 25px;
+    font-size: 20px; /* 폰트 크기 설정 */
+    color: #bbb; /* 텍스트 색상 설정 */
+    margin-bottom: 25px; /* 하단 여백 설정 */
   }
 
   .right-section .greeting {
-    font-size: 20px;
-    color: #333; /* Regular text color */
-    margin-bottom: 20px;
+    font-size: 20px; /* 폰트 크기 설정 */
+    color: #333; /* 텍스트 색상 설정 */
+    margin-bottom: 20px; /* 하단 여백 설정 */
   }
 
   .info-container {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
+    display: flex; /* 플렉스 박스 설정 */
+    align-items: center; /* 수직 중앙 정렬 */
+    margin-bottom: 20px; /* 하단 여백 설정 */
   }
 
   .info-container img {
-    width: 20px;
-    height: 20px;
-    margin-right: 7px; 
+    width: 20px; /* 너비 설정 */
+    height: 20px; /* 높이 설정 */
+    margin-right: 7px; /* 오른쪽 여백 설정 */
   }
 
   .info-text { 
-    font-size: 18px; 
-    color: #bbb; 
+    font-size: 18px; /* 폰트 크기 설정 */
+    color: #bbb; /* 텍스트 색상 설정 */
   }
 
- /* 소셜 링크 */
+  /* 소셜 링크 스타일 */
   .social-links {
-      position: absolute; 
-      bottom: 50; 
-      width: 100%; 
-      text-align: left; 
-      padding: 10px 0; 
-    }
+    position: absolute; /* 절대 위치 설정 */
+    bottom: 50; /* 하단 위치 설정 */
+    width: 100%; /* 너비 설정 */
+    text-align: left; /* 왼쪽 정렬 */
+    padding: 10px 0; /* 상하 패딩 설정 */
+  }
 
-/*  소셜 링크 이미지 */
-    .social-links img {
-      width: 100px; 
-      height: 100px; 
-      margin-right: 15px; 
-    }
+  /* 소셜 링크 이미지 스타일 */
+  .social-links img {
+    width: 100px; /* 너비 설정 */
+    height: 100px; /* 높이 설정 */
+    margin-right: 15px; /* 오른쪽 여백 설정 */
+  }
 
   .social-text {
-    display: block; 
-    color: #fff; 
-    text-align: center; 
-    font-size: 0.8em; 
-    margin-top: 5px; 
-    }
-
+    display: block; /* 블록 요소로 설정 */
+    color: #fff; /* 텍스트 색상 설정 */
+    text-align: center; /* 중앙 정렬 */
+    font-size: 0.8em; /* 폰트 크기 설정 */
+    margin-top: 5px; /* 상단 여백 설정 */
+  }
 </style>
 </head>
 <body>
 
-<div class="container">
-  <div class="left-section">
-    <img src="2.jpg" alt="Profile Image">
-  
+<div class="container"> <!-- 메인 컨테이너 시작 -->
+  <div class="left-section"> <!-- 왼쪽 섹션 시작 -->
+    <img src="2.jpg" alt="Profile Image"> <!-- 프로필 이미지 -->
+
     <!-- 네비게이션 메뉴 -->  
     <ul class="menu">
-      <li><a href="index.html">HOME</a></li> 
-      <li><a href="자기소개.html">INTERESTS</a></li>
-      <li><a href="진로및계획.html">COURSE</a></li>
+      <li><a href="index.html">HOME</a></li> <!-- 홈 링크 -->
+      <li><a href="자기소개.html">INTERESTS</a></li> <!-- 취미 페이지 링크 -->
+      <li><a href="진로및계획.html">COURSE</a></li> <!-- 진로 및 계획 페이지 링크 -->
     </ul>
-  </div>
+  </div> <!-- 왼쪽 섹션 끝 -->
 
-  <!-- 내 정보 -->
-  <div class="right-section">
-    <div class="name">HAN SANG HUN</div>
-    <div class="info-container">
-      <img src="7.jpg" alt="Birthdate Icon">
-      <span class="info-text">2000.03.06</span>
+  <!-- 오른쪽 섹션 - 내 정보 -->
+  <div class="right-section"> <!-- 오른쪽 섹션 시작 -->
+    <div class="name">HAN SANG HUN</div> <!-- 이름 표시 -->
+    <div class="info-container"> <!-- 정보 컨테이너 -->
+      <img src="7.jpg" alt="Birthdate Icon"> <!-- 생년월일 아이콘 -->
+      <span class="info-text">2000.03.06</span> <!-- 생년월일 텍스트 -->
     </div>
-    <div class="info-container">
-      <img src="5.jpg" alt="Phone Icon">
-      <span class="info-text">+(82) 10-1111-1111</span>
+    <div class="info-container"> <!-- 정보 컨테이너 -->
+      <img src="5.jpg" alt="Phone Icon"> <!-- 전화번호 아이콘 -->
+      <span class="info-text">+(82) 10-1111-1111</span> <!-- 전화번호 텍스트 -->
     </div>
-    <div class="info-container">
-      <img src="6.jpg" alt="Email Icon">
-      <span class="info-text">tkdgnsgks566245@naver.com</span>
+    <div class="info-container"> <!-- 정보 컨테이너 -->
+      <img src="6.jpg" alt="Email Icon"> <!-- 이메일 아이콘 -->
+      <span class="info-text">tkdgnsgks566245@naver.com</span> <!-- 이메일 텍스트 -->
     </div>
 
-  <!-- 인사말 -->
-  <div class="greeting">
-    <br>   
-    <b>" 안녕하세요."</b> 
-    <br> 
-    <br>20191110 한상훈의 개인 웹페이지에 오신 것을 환영합니다. 
-    <br>이곳은 그 여정을 담은 공간으로, 꿈에 한 발짝 더 다가가기 위한 기록입니다.
-    <br>
-    <br>
-    <br> 좌측의 메뉴를 사용하여 다른페이지로 이동 할 수 있습니다. 
-    <br> 위에서부터 순서대로 <strong> Home(시작페이지,자기소개), INTERSTS(취미), COURSE(진로 및 계획)</strong> 입니다.
-    <br> 아래의 이미지를 누르면 저의 블로그와 GitHub페이지로 이동하게 됩니다.  <br>  <br> 
-    </div> 
+    <!-- 인사말 -->
+    <div class="greeting"> <!-- 인사말 시작 -->
+      <br>   
+      <b>" 안녕하세요."</b> <!-- 인사말 텍스트 강조 -->
+      <br> 
+      <br>20191110 한상훈의 개인 웹페이지에 오신 것을 환영합니다. <!-- 인사말 텍스트 -->
+      <br>이곳은 그 여정을 담은 공간으로, 꿈에 한 발짝 더 다가가기 위한 기록입니다.
+      <br>
+      <br>
+      <br> 좌측의 메뉴를 사용하여 다른 페이지로 이동 할 수 있습니다. <!-- 페이지 안내 -->
+      <br> 위에서부터 순서대로 <strong> Home(시작페이지, 자기소개), INTERESTS(취미), COURSE(진로 및 계획)</strong> 입니다. <!-- 메뉴 설명 -->
+      <br> 아래의 이미지를 누르면 저의 블로그와 GitHub 페이지로 이동하게 됩니다.  <br>  <br> <!-- 이미지 클릭 안내 -->
+    </div> <!-- 인사말 끝 -->
     
-    
- <!-- 소셜 링크 -->
- <div class="social-links">
-  <a href="https://blog.naver.com/hsh5662645/" target="_blank">
-    <img src="3.jpg" alt="blog-icon">
-  </a>
-  <a href="https://github.com/hsh2222/sw20240725/" target="_blank">
-    <img src="4.jpg" alt="GitHub" class="github-icon">
-  </a>
-</div>
-
-  </div>
-</div>
+    <!-- 소셜 링크 -->
+    <div class="social-links"> <!-- 소셜 링크 시작 -->
+      <a href="https://blog.naver.com/hsh5662645/" target="_blank"> <!-- 블로그 링크 -->
+        <img src="3.jpg" alt="blog-icon"> <!-- 블로그 아이콘 이미지 -->
+      </a>
+      <a href="https://github.com/hsh2222/sw20240725/" target="_blank"> <!-- GitHub 링크 -->
+        <img src="4.jpg" alt="GitHub" class="github-icon"> <!-- GitHub 아이콘 이미지 -->
+      </a>
+    </div> <!-- 소셜 링크 끝 -->
+  </div> <!-- 오른쪽 섹션 끝 -->
+</div> <!-- 메인 컨테이너 끝 -->
 
 </body>
 </html>
