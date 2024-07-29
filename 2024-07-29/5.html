@@ -1,0 +1,71 @@
+<!DOCTYPE html> <!-- HTML5 문서임을 선언 -->
+<html lang="en"> <!-- 문서의 언어를 영어로 설정 -->
+<head>
+    <meta charset="UTF-8"> <!-- 문자 인코딩을 UTF-8로 설정하여 다양한 문자를 지원 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 모바일 디바이스에서 화면 크기에 맞춰보기 -->
+    <title>Document</title> <!-- 브라우저 탭에 표시될 문서 제목 -->
+    <script>
+        // 페이지가 모두 로드된 후 실행되는 함수
+        window.onload = function() {
+            // HTML 요소를 자바스크립트 변수에 저장
+            var memoTxt = document.getElementById('memoTxt'); // id가 'memoTxt'인 입력란 요소를 변수에 저장
+            var demo = document.querySelector('#demo'); // id가 'demo'인 <tbody> 요소를 변수에 저장
+            var clickBtn = document.querySelector('#clickBtn'); // id가 'clickBtn'인 버튼 요소를 변수에 저장
+            var resetBtn = document.querySelector('#resetBtn'); // id가 'resetBtn'인 버튼 요소를 변수에 저장
+
+            // 이벤트 핸들러 함수를 정의
+            var handleEvent = function(event) {
+                // <tbody> 요소에 새로운 행을 추가하고 입력란의 값을 설정
+                demo.innerHTML += `<tr align="center">
+                    <td><input type="checkbox"></td>
+                    <td>${ memoTxt.value } </td>
+                    <td><button>수정</button></td>
+                    <td><button>삭제</button></td>
+                </tr>`;
+
+                memoTxt.value = ""; // 입력란을 비웁니다.
+                memoTxt.focus(); // 입력란에 포커스를 다시 설정하여 사용자가 계속 입력할 수 있게 합니다.
+            }
+
+            // 클릭 버튼에 대한 이벤트 핸들러 추가
+            clickBtn.addEventListener('click', handleEvent);
+
+            // 입력 필드에서 키가 눌릴 때의 이벤트 핸들러 추가
+            memoTxt.onkeyup = function(event) { // 'keyup' 이벤트는 사용자가 키를 뗐을 때 발생합니다.
+                // 눌린 키가 엔터 키인지 확인
+                if(event.keyCode === 13) { // keyCode 13은 엔터 키를 의미합니다.
+                    handleEvent(event); // 엔터 키가 눌리면 handleEvent 함수 실행
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Todo List</h1> <!-- 페이지 제목 -->
+    <!-- 입력란: 사용자가 텍스트를 입력할 수 있는 곳 -->
+    메모: <input type="text" id="memoTxt" value="안녕 세계"> <!-- id가 'memoTxt'인 입력란, 기본값으로 "안녕 세계"가 설정됨 -->
+    <!-- 버튼: 클릭 시 자바스크립트 동작을 트리거 -->
+    <button type="button" id="clickBtn">Click</button> <!-- id가 'clickBtn'인 버튼 -->
+    <button type="button" id="resetBtn">Reset</button> <!-- id가 'resetBtn'인 버튼 -->
+    <hr> <!-- 수평선 -->
+    <!-- 텍스트를 표시하는 <table> 요소 -->
+    <table id="demo" width="550" border="1"> <!-- id가 'demo'인 <table> 요소 -->
+        <thead>
+            <tr>
+                <th>확인</th> <!-- 표의 첫 번째 열의 제목 -->
+                <th>할일</th> <!-- 표의 두 번째 열의 제목 -->
+                <th>수정</th> <!-- 표의 세 번째 열의 제목 -->
+                <th>삭제</th> <!-- 표의 네 번째 열의 제목 -->
+            </tr>
+        </thead>
+        <tbody id="demo">
+            <tr align="center">
+                <td><input type="checkbox"></td> <!-- 확인란으로 사용할 체크박스 -->
+                <td>개 밥 주기</td> <!-- 할 일 항목 -->
+                <td><button>수정</button></td> <!-- 수정 버튼 -->
+                <td><button>삭제</button></td> <!-- 삭제 버튼 -->
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
