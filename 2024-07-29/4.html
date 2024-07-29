@@ -7,31 +7,38 @@
     <script>
         // 페이지가 모두 로드된 후 실행되는 함수
         window.onload = function() {
-            // HTML 요소를 자바스크립트 변수에 저장
-            var memoText = document.getElementById('memoTxt'); // id가 'memoTxt'인 입력란 요소를 변수에 저장
-            var demo = document.querySelector('#demo'); // id가 'demo'인 <p> 요소를 변수에 저장
-            var resetBtn = document.querySelector('#resetBtn'); // id가 'resetBtn'인 버튼 요소를 변수에 저장
+            // id가 'memoTxt'인 입력란 요소를 변수 memoText에 저장
+            var memoText = document.getElementById('memoTxt');
+            // id가 'demo'인 <p> 요소를 변수 demo에 저장
+            var demo = document.querySelector('#demo');
+            // id가 'resetBtn'인 버튼 요소를 변수 resetBtn에 저장
+            var resetBtn = document.querySelector('#resetBtn');
             
-            // 콘솔에 각 요소를 출력하여 확인
+            // 각 요소를 콘솔에 출력하여 확인
             console.log(memoText, demo, resetBtn);
 
             // 입력 필드에서 키가 눌릴 때의 이벤트 핸들러 추가
             memoText.addEventListener('keydown', function(event) {
                 // 눌린 키가 엔터 키인지 확인
                 if (event.key === 'Enter') {
+                    // 콘솔에 입력 필드의 객체 정보를 출력
+                    console.log(memoText);
+                    // 콘솔에 입력 필드의 값을 출력
+                    console.log(memoText.value);
+                    
                     // <p> 요소의 내용을 입력값으로 변경
                     demo.innerHTML = memoText.value;
-                    
-                    // 입력 필드 초기화 및 포커스 설정
-                    memoText.value = ""; // 입력 필드를 비웁니다.
-                    memoText.focus(); // 입력 필드에 포커스를 다시 설정하여 사용자가 계속 입력할 수 있게 합니다.
+
+                    // 입력 필드를 비우고 포커스를 다시 설정하여 사용자가 계속 입력할 수 있게 함
+                    memoText.value = "";
+                    memoText.focus(); 
                 }
             });
 
             // 리셋 버튼에 대한 이벤트 핸들러 추가
             resetBtn.addEventListener('click', function(event) {
                 // <p> 요소의 내용을 기본 텍스트로 복원
-                demo.innerHTML = "JavaScript can change HTML content."; // <p> 요소의 내용을 기본 텍스트로 복원
+                demo.innerHTML = "JavaScript can change HTML content.";
             });
         };
     </script>
@@ -40,10 +47,10 @@
     <!-- 입력란: 사용자가 텍스트를 입력할 수 있는 곳 -->
     메모 : <input type="text" id="memoTxt" value="안녕 세계"> <!-- id가 'memoTxt'인 입력란, 기본값으로 "안녕 세계"가 설정됨 -->
 
-    <!-- 텍스트를 표시하는 <p> 요소  -->
+    <!-- 텍스트를 표시하는 <p> 요소 -->
     <p id="demo">JavaScript can change HTML content.</p> <!-- id가 'demo'인 <p> 요소, 초기 텍스트로 설정됨 -->
 
-    <!-- 버튼: 클릭 시 자바스크립트 동작을 트리거 -->
+    <!-- 리셋 버튼: 클릭 시 자바스크립트 동작을 트리거 -->
     <button type="button" id="resetBtn">Reset</button> <!-- id가 'resetBtn'인 버튼, 클릭 시 <p>의 내용이 기본 텍스트로 복원됨 -->
 </body>
 </html>
