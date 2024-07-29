@@ -1,0 +1,46 @@
+<!DOCTYPE html> <!-- HTML5 문서임을 선언 -->
+<html lang="en"> <!-- 문서의 언어를 영어로 설정 -->
+<head>
+    <meta charset="UTF-8"> <!-- 문자 인코딩을 UTF-8로 설정하여 다양한 문자를 지원 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 모바일 디바이스에서 화면 크기에 맞춰보기 -->
+    <title>Document</title> <!-- 브라우저 탭에 표시될 문서 제목 -->
+    <script>
+        // 페이지가 모두 로드된 후 실행되는 함수
+        window.onload = function() {
+            // HTML 요소를 자바스크립트 변수에 저장
+            var memoText = document.getElementById('memoTxt'); // id가 'memoTxt'인 요소를 선택하여 변수에 저장
+            var demo = document.querySelector('#demo'); // id가 'demo'인 요소를 선택하여 변수에 저장
+            var clickBtn = document.querySelector('#clickBtn'); // id가 'clickBtn'인 버튼을 선택하여 변수에 저장
+            var resetBtn = document.querySelector('#resetBtn'); // id가 'resetBtn'인 버튼을 선택하여 변수에 저장
+            
+            // 콘솔에 각 요소를 출력하여 확인
+            console.log(memoText, demo, clickBtn, resetBtn);
+
+            // 'Click' 버튼에 클릭 이벤트를 추가
+            clickBtn.onclick = function() {
+                // 입력란에서 값을 가져와서 변수에 저장
+                var inputText = document.getElementById('memoTxt').value; // id가 'memoTxt'인 입력란의 값을 가져와 저장
+                // 'demo' id를 가진 <p> 요소의 내용을 입력값으로 변경
+                document.getElementById("demo").innerHTML = inputText; // 'demo' 요소의 내용을 입력값으로 설정
+            }
+
+            // 'Reset' 버튼에 클릭 이벤트를 추가
+            resetBtn.onclick = function() {
+                // 'demo' id를 가진 <p> 요소의 내용을 기본 텍스트로 변경
+                document.getElementById("demo").innerHTML = "JavaScript can change HTML content."; // 'demo' 요소의 내용을 기본 텍스트로 되돌림
+            }
+        }
+    </script>
+</head>
+<body>
+    <!-- 입력란: 사용자가 텍스트를 입력할 수 있는 곳 -->
+    메모 : <input type="text" id="memoTxt" value="안녕 세계"> <!-- id가 'memoTxt'인 입력란, 기본값으로 "안녕 세계"가 설정됨 -->
+
+    <!-- 텍스트를 표시하는 <p> 요소 -->
+    <p id="demo">JavaScript can change HTML content.</p> <!-- id가 'demo'인 요소, 초기 텍스트로 설정됨 -->
+
+    <!-- 버튼: 클릭 시 자바스크립트 동작을 트리거 -->
+    <button type="button" id="clickBtn" class="btn">Click</button> <!-- id가 'clickBtn'인 버튼, 클릭 시 입력값으로 <p>의 내용이 변경됨 -->
+    <button type="button" id="resetBtn">Reset</button> <!-- id가 'resetBtn'인 버튼, 클릭 시 <p>의 내용이 기본 텍스트로 복원됨 -->
+</body>
+</html>

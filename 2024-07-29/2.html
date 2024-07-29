@@ -4,31 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <!-- 자바스크립트는 인터프리터 언어(c언어는 컴파일) -->
 </head>
+
 <body>
-    
-    <p id="demo">JavaScript can change HTML content.</p> <!-- 이 <p> 태그는 id가 "demo"입니다. -->
+    <p id="demo">JavaScript can change HTML content.</p>
 
-    <!-- 버튼들 -->
-    <button type="button" id="changeBtn">Change</button> <!-- Change 버튼 -->
-    <button type="button" id="resetBtn">Reset</button> <!-- Reset 버튼 -->
-
-
-    <!-- 스크립트가 <body> 끝에 있어야 하는 이유는 
-    JavaScript가 페이지의 내용이 모두 로드된 후에 실행되도록 하기 위해서입니다. 
-    이렇게 하면 JavaScript가 페이지의 요소들을 제대로 찾고 수정할 수 있습니다.-->
-    <script>
-
-        //브라우저 개발자 도구 콘솔에 window 객체의 모든 속성과 메서드를 구조적으로 출력합니다.
-        //이를 통해 window 객체의 다양한 기능과 속성을 탐색할 수 있습니다.
-        console.dir(window);
-
-        // 1. id가 "demo"인 <p> 태그를 찾습니다.
-        var demo = document.getElementById('demo');
-        
-        // 2. 찾은 <p> 태그를 콘솔에 보여줍니다. (개발자 도구에서 확인할 수 있습니다.)
-        console.log(demo);
-    </script>
+    <!-- 인라인 적용 방식 -->
+    <button type="button" onclick='
+            document.getElementById("demo").innerHTML = "Hello JavaScript!";
+            document.body.bgColor="yellow"'>Change</button>
+    <button type="button" onclick='
+            document.getElementById("demo").innerHTML = "JavaScript can change HTML content.";
+            document.body.bgColor=""'>Reset</button>
 </body>
 </html>
