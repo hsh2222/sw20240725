@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       div{
+        border: 1px solid navy;
+        padding: 5px;
+        border-radius: 8px; /*테두리 둥글게*/
+        }
+
+        div.header {
+            overflow: hidden;
+        }
+
+        div.middle {
+            overflow: hidden;
+        }
+
+        div.footer {
+            height: 100px;
+        }
+
+        div.container {
+            width: 1000px;
+            margin: auto; /* 수평으로 중앙 정렬*/
+        }
+        div.header h1{
+            text-align: center; /* 수평으로 텍스트 정렬*/
+        }
+        div.header div{
+            height: 50px;
+        }
+        div.middle > div:nth-child(1) {
+            width: 180px;
+        }
+        div.middle > div:nth-child(2) {
+            width: 590px;
+        }
+        div.middle > div:nth-child(3) {
+            width: 180px;
+        }
+        div.middle > div {
+            float: left;
+            height: 300px;
+        }
+
+        .nav {
+            border: 1px solid gray; /* 헤더의 테두리를 회색 1px 실선으로 설정 */
+            width: 990px; /* 헤더의 가로 너비를 1000px로 설정 */
+            /* height: 500px; */ /* height는 세로 너비를 설정, 주석 처리되어 있어 현재 적용되지 않음 */
+            margin: auto; /* 수평으로 중앙 정렬, 부모 요소 내에서 자동으로 여백 조절 */
+            /*
+            상단: margin-top: 10px; 상단에 10픽셀의 여백을 설정합니다.
+            우측: margin-right: 20px; 우측에 20픽셀의 여백을 설정합니다.
+            하단: margin-bottom: 15px; 하단에 15픽셀의 여백을 설정합니다.
+            좌측: margin-left: 5px; 좌측에 5픽셀의 여백을 설정합니다.
+            */
+        }
+
+        h1 {
+            text-align: center; /* 텍스트를 부모 요소의 중앙에 정렬 */
+            /*
+            left: 텍스트를 부모 요소의 왼쪽에 정렬합니다. 기본값입니다.
+            right: 텍스트를 부모 요소의 오른쪽에 정렬합니다.
+            center: 텍스트를 부모 요소의 중앙에 정렬합니다.
+            justify: 텍스트를 양쪽 정렬합니다.
+            */
+        }
+
+        ul {
+            margin: auto; /* 수평으로 중앙 정렬, 부모 요소 내에서 자동으로 여백 조절 */
+            border: 0px solid red; /* ul 요소에 테두리 없음, 주석 처리로 현재 적용되지 않음 */
+            padding: 1px; /* ul 요소의 내부 여백을 1px로 설정 */
+            /*
+            padding: 10px; /* 모든 방향에 10px의 내측 여백 설정 
+            padding: 10px 20px; /* 상하에 10px, 좌우에 20px의 내측 여백 설정 
+            padding: 10px 20px 30px; /* 상단 10px, 좌우 20px, 하단 30px의 내측 여백 설정 
+            padding: 10px 20px 30px 40px; /* 상단 10px, 우측 20px, 하단 30px, 좌측 40px의 내측 여백 설정 
+            */
+            overflow: hidden; /* float 속성으로 인해 발생할 수 있는 레이아웃 문제를 해결하기 위해 사용 */
+            width: 600px; /* ul 요소의 너비를 600px로 설정 */
+        }
+
+        .nav ul li {
+            width: 120px; /* 각 li 요소의 너비를 120px로 설정 */
+            height: 50px; /* 각 li 요소의 높이를 50px로 설정 */
+            border: 0px solid black; /* li 요소의 테두리를 검은색 1px 실선으로 설정 */
+            text-align: center; /* li 요소 내의 텍스트를 중앙 정렬 */
+            list-style: none; /* 기본 목록 스타일 제거 (점 또는 숫자) */
+            float: left; /* li 요소를 왼쪽으로 떠서 정렬 */
+            box-sizing: border-box; /* 요소의 너비와 높이에 패딩과 테두리를 포함 */
+            line-height: 50px; /* 텍스트의 세로 정렬을 위해 line-height를 높이와 동일하게 설정 */
+            font-family: Arial, Helvetica, sans-serif; /* 텍스트에 사용할 폰트를 설정 */
+        }
+
+        .nav {
+            border-bottom: 1px solid rgb(0, 0, 0); /* nav 요소의 하단에 빨간색 1px 실선 테두리 추가 */
+        }
+
+        .nav ul li:hover {
+            border-bottom: 2px solid red; /* 마우스 오버 시 li 요소의 하단에 빨간색 2px 실선 테두리 추가 */
+            font-weight: bold; /* 마우스 오버 시 텍스트를 굵게 표시 */
+            color: red; /* 마우스 오버 시 텍스트 색상을 빨간색으로 변경 */
+        }
+        .line {
+            border-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="header">
+            <h1>범준샘의 소프트웨어 공작실</h1> <!-- 페이지 제목 -->
+        </div>
+
+        <div class="nav">
+            <ul>
+                <li>Home</li> <!-- 메뉴 항목: Home -->
+                <li>Profile</li> <!-- 메뉴 항목: Profile -->
+                <li>Gallery</li> <!-- 메뉴 항목: Gallery -->
+                <li>Lecture</li> <!-- 메뉴 항목: Lecture -->
+                <li>Shop</li> <!-- 메뉴 항목: Shop -->
+                <hr class="line">
+            </ul>
+        </div>
+
+        <div class="middle">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+
+        <div class="footer">
+
+        </div>
+        
+    </div>
+</body>
+</html>
