@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> <!-- 문자 인코딩을 UTF-8로 설정하여 다양한 문자 표현 지원 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 모바일 기기에서 적절한 크기로 표시되도록 설정 -->
+    <title>회원 관리 페이지</title> <!-- 브라우저 탭에 표시될 제목 -->
+
+    <style>
+        /* 저장 버튼의 스타일을 정의 */
+        .saveBtn {
+            width: 100px; /* 버튼의 너비를 100px로 설정 */
+            height: 30px; /* 버튼의 높이를 30px로 설정 */
+            background-color: red; /* 버튼 배경색을 빨간색으로 설정 */
+            border: 0; /* 버튼의 기본 테두리를 제거 */
+            border-radius: 6px; /* 버튼 모서리를 둥글게 설정 */
+            box-shadow: 1px 1px 2px; /* 버튼에 그림자 효과 추가 */
+            color: white; /* 버튼 글자색을 흰색으로 설정 */
+            font-size: 16px; /* 버튼 글자 크기를 16px로 설정 */
+            cursor: pointer; /* 버튼 클릭 시 커서 모양 변경 */
+        }
+
+        /* 요소의 스타일을 정의, 주로 제목에 적용됨 */
+        .element {
+            border: 2px solid rgba(100, 100, 100, 1); /* 테두리 색상과 두께를 설정 */
+            border-radius: 4px; /* 테두리를 둥글게 설정 */
+            background-color: rgba(247, 203, 203, 0.5); /* 배경색을 반투명한 주황색으로 설정 */
+            box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.77); /* 그림자 효과 추가 */
+            text-shadow: 4px 2px 4px rgba(0, 0, 0, 0.3); /* 텍스트에 그림자 효과 추가 */
+            padding: 10px 0px; /* 내부 여백을 상하 10px, 좌우 0px로 설정 */
+            text-align: center; /* 텍스트를 가운데 정렬 */
+        }
+
+        /* 사원 목록 테이블의 스타일을 정의 */
+        .memListTbl {
+            border: 1px solid black; /* 테이블에 검은색 1px 실선 테두리 추가 */
+            width: 100%; /* 테이블 너비를 부모 요소의 100%로 설정 */
+            border-collapse: collapse; /* 테이블 셀의 테두리를 병합하여 단일 테두리로 표시 */
+        }
+
+        /* 테이블 헤더의 스타일을 정의 */
+        .memListTbl th, .memListTbl td {
+            border: 1px solid black; /* 셀에 검은색 1px 실선 테두리 추가 */
+            text-align: center; /* 데이터 텍스트를 가운데 정렬 */
+            padding: 8px; /* 셀 내부 여백 */
+        }
+
+        /* 댓글 테이블의 스타일을 정의 */
+        .subTbl tr td {
+            border-left: 0 solid black; /* 왼쪽 테두리 없음 */
+            border-right: 0 solid black; /* 오른쪽 테두리 없음 */
+            border-top: 0 solid black; /* 위쪽 테두리 없음 */
+            border-bottom: 1 solid black; /* 아래쪽에만 1px 실선 테두리 추가 */
+        }
+
+        /* 컨테이너의 스타일을 정의 */
+        div.container {
+            margin: auto; /* 컨테이너를 가운데 정렬 */
+            max-width: 800px; /* 최대 너비를 800px로 설정 */
+            min-width: 600px; /* 최소 너비를 600px로 설정 */
+        }
+    </style>
+</head>
+<body>
+    <!-- 페이지 컨테이너 -->
+    <div class="container">
+        <!-- 제목 영역 -->
+        <div>
+            <h1 class="element">회원 관리 페이지</h1> <!-- 제목을 중앙 정렬 및 스타일 적용 -->
+        </div>
+        <!-- 입력 폼 영역 -->
+        <div>
+            <form id="memberForm"> <!-- 폼 제출 시 자바스크립트로 처리하기 위해 id 설정 -->
+                <table class="memberForm"> <!-- 입력 폼을 테이블로 구성 -->
+                    <tr>
+                        <th><label for="name">이름</label></th> <!-- 이름 입력란 레이블 -->
+                        <td><input type="text" name="name" id="name" placeholder="성명을 입력 하세요"></td> <!-- 이름 입력 필드 -->
+                    </tr>
+                    <tr>
+                        <th><label for="dept">부서</label></th> <!-- 부서 입력란 레이블 -->
+                        <td><input type="text" name="dept" id="dept" value="경영지원"></td> <!-- 부서 입력 필드 (기본값: '경영지원') -->
+                    </tr>
+                    <tr>
+                        <th><label for="rank">직책</label></th> <!-- 직책 입력란 레이블 -->
+                        <td><input type="text" name="rank" id="rank" value="과장"></td> <!-- 직책 입력 필드 (기본값: '과장') -->
+                    </tr>
+                    <tr>
+                        <th><label for="gender">성별</label></th> <!-- 성별 선택 레이블 -->
+                        <td>
+                            <input type="radio" name="gender" id="genderMale" value="남성"> 남성 <!-- 성별 라디오 버튼 (남성) -->
+                            <input type="radio" name="gender" id="genderFemale" value="여성" checked> 여성 <!-- 성별 라디오 버튼 (여성, 기본값) -->
+                            <input type="radio" name="gender" id="genderOther" value="기타"> 기타 <!-- 성별 라디오 버튼 (기타) -->
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><label for="favorit">관심</label></th> <!-- 관심 분야 선택 레이블 -->
+                        <td>
+                            <input type="checkbox" name="favorit" id="favoritSw" value="sw개발" checked> SW개발 <!-- 관심 분야 체크박스 (SW개발, 기본값) -->
+                            <input type="checkbox" name="favorit" id="favoritSales" value="영업" checked> 영업 <!-- 관심 분야 체크박스 (영업, 기본값) -->
+                            <input type="checkbox" name="favorit" id="favoritReading" value="독서"> 독서 <!-- 관심 분야 체크박스 (독서) -->
+                            <input type="checkbox" name="favorit" id="favoritTraining" value="직업교육"> 직업교육 <!-- 관심 분야 체크박스 (직업교육) -->
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><label for="photo">사진</label></th> <!-- 사진 업로드 레이블 -->
+                        <td><input type="file" name="photo" id="photo"></td> <!-- 사진 파일 업로드 필드 -->
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="submit" class="saveBtn" value="SAVE"> <!-- 제출 버튼 (저장) -->
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <hr> <!-- 구분선 -->
+
+        <!-- 목록 영역 -->
+        <div>
+            <p>
+                검색 <input type="text"> <button>검색</button> <!-- 검색 입력 필드 및 버튼 -->
+            </p>
+            <table class="memListTbl"> <!-- 사원 목록 테이블 -->
+                <thead>
+                    <tr>
+                        <th>
+                            <input type="checkbox" name="" id=""> <!-- 전체 선택 체크박스 -->
+                        </th>
+                        <th>번호</th> <!-- 열 제목: 번호 -->
+                        <th>사진</th> <!-- 열 제목: 사진 -->
+                        <th>사원명</th> <!-- 열 제목: 사원명 -->
+                        <th>부서</th> <!-- 열 제목: 부서 -->
+                        <th>직급</th> <!-- 열 제목: 직급 -->
+                        <th>수정</th> <!-- 열 제목: 수정 -->
+                        <th>삭제</th> <!-- 열 제목: 삭제 -->
+                    </tr>
+                </thead>
+                <tbody id="memberListBody"> <!-- 동적으로 행을 추가할 tbody 영역 -->
+                    <!-- 초기 데이터가 여기에 추가됩니다. -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // 다음 번호를 관리하기 위한 변수
+        let nextId = 1044;
+
+        // 폼의 제출 이벤트를 처리하는 함수
+        document.getElementById('memberForm').onsubmit = function(event) {
+            // 기본 폼 제출 동작을 방지
+            event.preventDefault();
+
+            // 입력 필드 값 가져오기
+            let name = document.getElementById('name').value;
+            let dept = document.getElementById('dept').value;
+            let rank = document.getElementById('rank').value;
+
+            // 파일 업로드 처리 (단순히 파일 이름을 표시)
+            let photoFile = document.getElementById('photo').files[0];
+            let photoSrc = photoFile ? URL.createObjectURL(photoFile) : 'img02.png'; // 기본 이미지 경로
+
+            // 테이블에 새 행 추가
+            let tableBody = document.getElementById('memberListBody');
+            let newRow = document.createElement('tr');
+
+            // 행 내용 정의
+            newRow.innerHTML = `
+                <td><input type="checkbox" name="select" id="select${nextId}"></td> <!-- 체크박스 -->
+                <td>${nextId}</td> <!-- 새 사원 번호 (다음 번호) -->
+                <td><img src="${photoSrc}" alt="사원 사진" width="50" height="50"></td> <!-- 새 사원 사진 -->
+                <td>${name}</td> <!-- 입력된 사원명 -->
+                <td>${dept}</td> <!-- 입력된 부서 -->
+                <td>${rank}</td> <!-- 입력된 직급 -->
+                <td><button>Edit</button></td> <!-- 수정 버튼 -->
+                <td><button>Delete</button></td> <!-- 삭제 버튼 -->
+            `;
+
+            // 새로운 행을 테이블에 추가
+            tableBody.appendChild(newRow);
+
+            // 다음 번호를 1 증가
+            nextId++;
+        }
+    </script>
+</body>
+</html>
