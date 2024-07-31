@@ -6,7 +6,7 @@
     <title>Document</title> <!-- 브라우저 탭에 표시될 제목 -->
     <style>
         header {
-            border: 1px solid gray; /* 헤더의 테두리를 회색 1px 실선으로 설정 */
+            border: 0px solid gray; /* 헤더의 테두리를 회색 1px 실선으로 설정 */
             width: 1000px; /* 헤더의 가로 너비를 1000px로 설정 */
             /* height: 500px; */ /* height는 세로 너비를 설정, 주석 처리되어 있어 현재 적용되지 않음 */
             margin: auto; /* 수평으로 중앙 정렬, 부모 요소 내에서 자동으로 여백 조절 */
@@ -40,12 +40,13 @@
             */
             overflow: hidden; /* float 속성으로 인해 발생할 수 있는 레이아웃 문제를 해결하기 위해 사용 */
             width: 600px; /* ul 요소의 너비를 600px로 설정 */
+            border-bottom: 1px solid rgb(235, 13, 13);
         }
 
         header ul li {
             width: 120px; /* 각 li 요소의 너비를 120px로 설정 */
             height: 50px; /* 각 li 요소의 높이를 50px로 설정 */
-            border: 1px solid black; /* li 요소의 테두리를 검은색 1px 실선으로 설정 */
+            border: 0px solid black; /* li 요소의 테두리를 검은색 1px 실선으로 설정 */
             text-align: center; /* li 요소 내의 텍스트를 중앙 정렬 */
             list-style: none; /* 기본 목록 스타일 제거 (점 또는 숫자) */
             float: left; /* li 요소를 왼쪽으로 떠서 정렬 */
