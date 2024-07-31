@@ -1,106 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="UTF-8"> <!-- 문서의 문자 인코딩을 UTF-8로 설정 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 반응형 웹 디자인을 위한 뷰포트 설정 -->
+    <title>Document</title> <!-- 문서 제목 설정 -->
     <style>
         header {
-            border: 0px solid gray;
-            width: 1000px;
-            margin: auto;
+            border: 0px solid gray; /* 헤더의 테두리를 회색 0픽셀로 설정 */
+            width: 1000px; /* 헤더의 너비를 1000픽셀로 설정 */
+            margin: auto; /* 헤더를 가운데 정렬 */
         }
         h1 {
-            text-align: center;
+            text-align: center; /* h1 요소의 텍스트를 가운데 정렬 */
         }
         ul {
-            margin: auto;
-            border: 0px solid red;
-            padding: 0;
+            margin: auto; /* ul 요소를 가운데 정렬 */
+            border: 0px solid red; /* ul 요소의 테두리를 빨간색 0픽셀로 설정 */
+            padding: 0; /* ul 요소의 안쪽 여백을 0으로 설정 */
             /* height 속성을 주지 않고 overflow 설정 */
             /* height: 40px; */
-            overflow: hidden;
-            width: 600px;
+            overflow: hidden; /* ul 요소의 내용이 넘칠 경우 숨김 */
+            width: 600px; /* ul 요소의 너비를 600픽셀로 설정 */
         }
         div ul li {
-            width: 120px;
-            height: 50px;
-            border: 0px solid black;
-            text-align: center;
-            list-style: none;
-            float: left;
-            box-sizing: border-box;
-            line-height: 50px;
-            font-family: Arial, Helvetica, sans-serif;
+            width: 120px; /* li 요소의 너비를 120픽셀로 설정 */
+            height: 50px; /* li 요소의 높이를 50픽셀로 설정 */
+            border: 0px solid black; /* li 요소의 테두리를 검정색 0픽셀로 설정 */
+            text-align: center; /* li 요소의 텍스트를 가운데 정렬 */
+            list-style: none; /* li 요소의 기본 리스트 스타일을 제거 */
+            float: left; /* li 요소를 왼쪽으로 정렬 */
+            box-sizing: border-box; /* 테두리와 패딩을 포함한 박스 크기 설정 */
+            line-height: 50px; /* li 요소의 행 간격을 50픽셀로 설정 */
+            font-family: Arial, Helvetica, sans-serif; /* li 요소의 폰트를 설정 */
         }
         nav {
-            border-bottom: 1px solid red;
+            border-bottom: 1px solid red; /* nav 요소의 아래쪽 테두리를 빨간색 1픽셀로 설정 */
         }
         div ul li:hover {
-            border-bottom: 2px solid red;
-            font-weight: bold;
-            color: red;
+            border-bottom: 2px solid red; /* li 요소에 마우스를 올렸을 때 아래쪽 테두리를 빨간색 2픽셀로 설정 */
+            font-weight: bold; /* li 요소의 텍스트를 굵게 설정 */
+            color: red; /* li 요소의 텍스트 색상을 빨간색으로 설정 */
         }
         #main {
-            width: 1000px;
-            margin: auto;
+            width: 1000px; /* main 요소의 너비를 1000픽셀로 설정 */
+            margin: auto; /* main 요소를 가운데 정렬 */
         }
         #main div {
-            height: 100vh;
-            text-align: center;
-            border: 1px solid orange;
+            height: 100vh; /* main 요소 내 div 요소의 높이를 화면 전체 높이로 설정 */
+            text-align: center; /* main 요소 내 div 요소의 텍스트를 가운데 정렬 */
+            border: 1px solid orange; /* main 요소 내 div 요소의 테두리를 주황색 1픽셀로 설정 */
         }
         div.sticky {
-            position: -webkit-sticky;
-            position: sticky;
-            top: 0;
-            padding: 5px;
-            background-color: white;
+            position: -webkit-sticky; /* 웹킷 브라우저용 sticky 설정 */
+            position: sticky; /* 모든 호환 브라우저용 sticky 설정 */
+            top: 0; /* 상단에서 0 픽셀 떨어진 위치에 고정 */
+            padding: 5px; /* 안쪽 여백을 5픽셀로 설정 */
+            background-color: white; /* 배경색을 흰색으로 설정 */
         }
         .indexcopy {
-            width: 100%; /* iframe 너비를 100%로 설정 */
-            max-width: 620px; /* 최대 너비를 800px로 설정 */
-            height: 400px; /* iframe 높이를 400px로 설정 */
-            border: none; /* 테두리 제거 */
+            width: 100%; /* iframe 요소의 너비를 100%로 설정 */
+            max-width: 620px; /* iframe 요소의 최대 너비를 620픽셀로 설정 */
+            height: 400px; /* iframe 요소의 높이를 400픽셀로 설정 */
+            border: none; /* iframe 요소의 테두리를 제거 */
         }
-        
-
-
     </style>
 </head>
 <body>
     <header>
-        <h1>범준샘의 소프트웨어 공작실</h1>
+        <h1>범준샘의 소프트웨어 공작실</h1> <!-- 웹 페이지의 제목을 중앙에 배치 -->
     </header>
-    <div class="sticky">
+    <div class="sticky"> <!-- sticky 클래스의 div 요소로, 스크롤해도 상단에 고정 -->
         <nav>
             <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#profile">Profile</a></li>
-                <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#lecture">Lecture</a></li>
-                <li><a href="#shop">Shop</a></li>
+                <li><a href="#home">Home</a></li> <!-- 홈 링크 -->
+                <li><a href="#profile">Profile</a></li> <!-- 프로필 링크 -->
+                <li><a href="#gallery">Gallery</a></li> <!-- 갤러리 링크 -->
+                <li><a href="#lecture">Lecture</a></li> <!-- 강의 링크 -->
+                <li><a href="#shop">Shop</a></li> <!-- 상점 링크 -->
             </ul>
         </nav>
     </div>
     <div id="main">
         <div id="home">
             <br><br>
-            <h3>오신것을 환영합니다</h3>
+            <h3>오신것을 환영합니다</h3> <!-- 홈 섹션의 환영 메시지 -->
         <div id="profile">
             <br><br>
-            <h3>Profile</h3>
-            <iframe src="index.html" class="indexcopy"></iframe>
-            
+            <h3>Profile</h3> <!-- 프로필 섹션 제목 -->
+            <iframe src="index.html" class="indexcopy"></iframe> <!-- 다른 페이지를 불러오는 iframe 요소 -->
         </div>
         <div id="gallery">
-            <h3>Gallery</h3>
+            <h3>Gallery</h3> <!-- 갤러리 섹션 제목 -->
         </div>
         <div id="lecture">
-            <h3>Lecture</h3>
+            <h3>Lecture</h3> <!-- 강의 섹션 제목 -->
         </div>
         <div id="shop">
-            <h3>Shop</h3>
+            <h3>Shop</h3> <!-- 상점 섹션 제목 -->
         </div>
     </div>
 </body>
