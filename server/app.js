@@ -1,3 +1,4 @@
+/* app.js*/
 const http = require('http');
 const express = require('express');
 const app = express()
@@ -13,10 +14,10 @@ app.use(express.static('public'));
 
 // 사람 데이터 목록 선언
 const saramList = [
-    {no:102, name:'홍길동', email:'hong@saram.com', job:'도둑', age:23},
-    {no:101, name:'이길동', email:'lee@saram.com', job:'변호사', age:33},
-    {no:103, name:'김길순', email:'kim@saram.com', job:'프로그래머', age:27},
-    {no:104, name:'박길순', email:'park@saram.com', job:'군인', age:25}
+    {no:102, name:'홍길동', email:'hong@saram.com', job:'도둑', age:22},
+    {no:101, name:'이길동', email:'lee@saram.com', job:'변호사', age:24},
+    {no:103, name:'김길순', email:'kim@saram.com', job:'프로그래머', age:34},
+    {no:104, name:'박길순', email:'park@saram.com', job:'군인', age:44}
 ];
 
 // localhost:8000/saram
@@ -60,10 +61,18 @@ app.get('/saram/edit', function(req, res) {
 });
 
 app.get('/saram/update', function(req, res) {
-    console.log("GET - /saram/update >>> ", req.query);
-    // saramList에서 해당 정보를 찾아서 update 하기.
-    res.send(req.query);
-});
+    console.log('GET - /saram/update >>>> no: ' + req.query.no);
+    var idx = saramList.findIndex(function(saram) {
+        return saram.no == req.query.no;
+    });
+    var saram = req.query;
+    if(idx != -1) {
+        saramList[idx] = saram;
+    }
+    req.app.render('saramDetail', {saram}, function(err, html) {
+        res.end(html);
+    });
+})
 
 const server = http.createServer(app);
 server.listen(port, function() {

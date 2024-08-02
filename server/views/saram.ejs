@@ -1,30 +1,33 @@
-<!DOCTYPE html>
+<!-- saram.ejs -->
+<!DOCTYPE html> <!-- HTML5 문서 선언 -->
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="UTF-8"> <!-- 문서의 문자 인코딩을 UTF-8로 설정 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 반응형 웹을 위한 뷰포트 설정 -->
+    <title>Document</title> <!-- 문서 제목 -->
 </head>
 <body>
-    <h3><%= message %></h3>
-    <h1>Saram page</h1>
-    <hr>
-    <table width="100%" border="1">
+    <h3><%= message %></h3> <!-- 서버에서 전달된 message를 출력 -->
+    <h1>Saram page</h1> <!-- 페이지 제목 -->
+    <hr> <!-- 수평선 -->
+    <table width="100%" border="1"> <!-- 테이블 설정, 테두리 1 -->
         <tr>
-            <th>번호</th>
-            <th>성명</th>
-            <th>이메일</th>
+            <th>번호</th> <!-- 테이블 헤더: 번호 -->
+            <th>성명</th> <!-- 테이블 헤더: 성명 -->
+            <th>이메일</th> <!-- 테이블 헤더: 이메일 -->
         </tr>
     <% 
-        // 이 부분은 자바스크립트 문법
+        // EJS 내 자바스크립트 코드 블록 시작
+        // saramList 배열을 순회하며 각 사용자를 처리
         saramList.forEach(function(saram) {
     %>
-        <tr align="center">
-            <td><%= saram.no %></td>
-            <td><a href="/saram/detail?no=<%= saram.no %>"><%= saram.name %></a></td>
-            <td><%= saram.email %></td>
+        <tr align="center"> <!-- 테이블 행, 내용 가운데 정렬 -->
+            <td><%= saram.no %></td> <!-- 사용자 번호 출력 -->
+            <td><a href="/saram/detail?no=<%= saram.no %>"><%= saram.name %></a></td> <!-- 사용자 이름 출력, 상세 페이지로 연결되는 링크 -->
+            <td><%= saram.email %></td> <!-- 사용자 이메일 출력 -->
         </tr>
     <%
+        // 자바스크립트 코드 블록 종료
         });
     %>
     </table>
