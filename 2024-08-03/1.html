@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트 실습</title>
+</head>
+<body>
+    
+    <script>
+        // var나 function으로 선언 하면 window객체의 멤버
+        var a_user = "user1"; // var로 선언된 변수는 전역 변수로, window 객체의 멤버가 됩니다.
+        let a_name = "김길동"; // let으로 선언된 변수는 블록 스코프를 가지며, window 객체의 멤버가 아닙니다.
+
+        // 브라우저에서 사용하는 JS 객체의 최상위 객체 window
+        console.dir(window); // window 객체를 콘솔에 출력합니다. (출력: window 객체의 구조)
+        console.dir(document); // document 객체를 콘솔에 출력합니다. (출력: document 객체의 구조)
+        // script 최상위에서는 this가 곧 window객체이다.
+        console.log("this === window는 ", this == window); // true를 출력합니다. (출력: this === window는  true)
+
+        // var로 선언된 변수를 열거하기
+        var admin01 = "김길동";
+        var admin02 = "이길동";
+        var admin03 = "박길동";
+        var admin04 = "홍길동";
+
+        // 연관 배열 형태로 사용 가능합니다.
+        console.log("admin01 = ", admin01); // 변수 admin01의 값을 출력합니다. (출력: admin01 =  김길동)
+        console.log("window.admin01 = ", window.admin01); // window 객체의 멤버로서 admin01의 값을 출력합니다. (출력: window.admin01 =  김길동)
+        console.log("this.admin01 = ", this.admin01); // this를 통해 admin01의 값을 출력합니다. (출력: this.admin01 =  김길동)
+        console.log("this['admin01'] = " + this['admin01']); // 대괄호 표기법으로 admin01의 값을 출력합니다. (출력: this['admin01'] = 김길동)
+        // 문자열 타입 + 숫자 타입의 결과 타입은 문자열 타입
+        // 'admin0' + 1 의 결과는 'admin01'
+        console.log("this['admin0' + 1] = " + this['admin0' + 1]); // 문자열 'admin0'에 숫자 1을 더하여 'admin01'의 값을 출력합니다. (출력: this['admin0' + 1] = 김길동)
+
+        // 반복문을 이용해서 순서대로 열거하기
+        for(var i=1; i<=4; i++) {
+            console.log(`admin0${i}의 결과는`, window[`admin0${i}`]); 
+            // 반복문을 통해 admin01부터 admin04까지의 값을 출력합니다.
+            // 출력: 
+            // admin01의 결과는 김길동
+            // admin02의 결과는 이길동
+            // admin03의 결과는 박길동
+            // admin04의 결과는 홍길동
+        }
+
+        // var로 선언된 함수는 window의 멤버가 됩니다.
+        function aMyFn() {
+            console.log('myFunction 실행'); // aMyFn 함수를 실행하면 해당 메시지가 출력됩니다. (출력: myFunction 실행)
+        }
+
+        // JS ES6 이후 버전에서 class 키워드 사용 가능
+        class MyCls {
+            fn01() {
+                // 클래스 객체의 멤버에서 this는 그 객체 자신을 가리킵니다.
+                // 객체의 멤버 변수를 선언 하기위해 this.을 사용
+                this.aClsName = "마이 클래스"; // 객체의 멤버 변수로 aClsName을 선언합니다.
+                // 클래스 멤버 내부에서는 window를 명시 해야 합니다.
+                window.aClassName2 = "너의 클래스"; // window 객체의 멤버 변수로 aClassName2를 선언합니다.
+                console.log("MyCls의 fn01() 함수에서 this는 ", this); 
+                // this가 현재 객체(MyCls의 인스턴스)를 가리킵니다.
+                // 출력: MyCls의 fn01() 함수에서 this는  MyCls {aClsName: '마이 클래스'}
+                console.log(window); // window 객체를 콘솔에 출력합니다. (출력: window 객체의 구조)
+            }
+        }
+
+        let myClsRef = new MyCls(); // MyCls 클래스의 인스턴스를 생성합니다.
+        myClsRef.fn01(); // MyCls 인스턴스의 fn01 메서드를 호출합니다.
+    </script>
+
+</body>
+</html>
