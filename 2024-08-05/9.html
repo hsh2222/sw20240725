@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>숫자 맞추기</title>
+</head>
+<body>
+<div>다음에서 시스템이 만든 숫자를 선택하세요.</div>
+<div id="sysMsg">결과: 게임을 다시 실행합니다!</div>
+<div id="game"></div>
+<script>
+  const sysMsg = document.getElementById('sysMsg')
+  let game = document.querySelector('#game')
+  let num = Math.floor(Math.random() * 100 + 1)
+  let cnt = 5, min = 1, max = 100
+
+  console.log(num)
+  drawList()
+
+  function drawList() {
+    game.innerHTML = ''
+    for (let i = min; i <= max; i++) {
+      let btn = document.createElement('button')
+      btn.innerText = i.toString()
+      btn.onclick = (e) => {
+        if (num !== parseInt(e.target.innerText)) {
+          if (cnt > 0)
+          {
+            sysMsg.innerText = `틀렸습니다. 기회는 ${--cnt}번 남았습니다.`
+            if (e.target.innerText > num)
+              max = parseInt(e.target.innerText) - 1
+            else
+              min = parseInt(e.target.innerText) + 1
+            drawList()
+          }
+
+          if (cnt === 0) {
+            sysMsg.innerText = '모든 기회를 소모하셨습니다. 게임을 종료합니다.'
+            disableAllButtons()
+          }
+        }
+        else {
+          sysMsg.innerText = `정답입니다!`
+          disableAllButtons();
+        }
+        e.target.style = "visibility: hidden";
+      }
+      game.appendChild(btn)
+    }
+  }
+
+  function disableAllButtons() {
+    const buttons = document.querySelectorAll('#game button');
+    buttons.forEach(button => {
+      button.onclick = null;
+    });
+  }
+</script>
+</body>
+</html>

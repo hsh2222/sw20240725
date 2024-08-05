@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>나이와 요일 입력</h1>
+    <form name="inputForm">
+        * 나이 입력: <input type="number" name="age" value="0"><br> <!-- 나이를 입력받는 숫자 입력 필드 -->
+        * 요일 선택: <select name="dayOfWeek"> <!-- 요일을 선택할 수 있는 드롭다운 메뉴 -->
+            <option value="1">일</option>
+            <option value="2">월</option>
+            <option value="3">화</option>
+            <option value="4">수</option>
+            <option value="5">목</option>
+            <option value="6">금</option>
+            <option value="7">토</option>
+        </select><br>
+        <input type="submit" value="선택 결과 출력 하기"></input> <!-- 폼 제출 버튼 -->
+    </form>
+    <hr>
+    <div id="resultBox">결과: ?세는 성인입니다. 오늘은 ?요일입니다.</div> <!-- 결과를 보여줄 부분 -->
+
+<script>
+    //var form = document.querySelector("form[name=inputForm]");
+    let form = document.forms[0]; // 첫 번째 form 요소를 가져옴, 더 나은 방식은 querySelector() 사용
+    let resultBox = document.querySelector("#resultBox"); // id가 resultBox인 요소를 가져옴
+    
+    form.onsubmit = (e) => {
+        e.preventDefault(); // 폼의 기본 제출 동작을 막음
+
+        // 나이 가져오기
+        let age = Number(e.target.age.value); // 입력된 나이를 숫자로 변환
+        let message = "성인"; // 기본 메시지 설정
+
+        // 나이에 따른 메시지 결정
+        if (age > 18) {
+            // 성인이므로 메시지는 그대로 "성인"
+        } else {
+            message = "미성년자"; // 18세 이하인 경우 메시지를 "미성년자"로 변경
+        }
+
+        // 선택한 요일의 숫자 값 가져오기
+        let dayOfWeek = Number(e.target.dayOfWeek.value); 
+        let dayName = "잘못된 값"; // 기본 요일 이름 설정
+
+        // 요일 이름을 switch 문으로 결정
+        switch (dayOfWeek) {
+        case 1:
+            dayName = "일요일";
+            break;
+        case 2:
+            dayName = "월요일";
+            break;
+        case 3:
+            dayName = "화요일";
+            break;
+        case 4:
+            dayName = "수요일";
+            break;
+        case 5:
+            dayName = "목요일";
+            break;
+        case 6:
+            dayName = "금요일";
+            break;
+        case 7:
+            dayName = "토요일";
+        }
+
+        // 결과를 화면에 출력
+        resultBox.innerHTML = `
+            결과: ${age}세는 ${message}입니다. 오늘은 ${dayName}입니다.
+        `;
+
+        // 질문1: var하고 let을 같이 쓴 이유를 설명해주실수있나요? let만 써도 될거 같은데
+        // let 선언방식은 ES6 이후에 나온 방식입니다. var과 let은 범위가 다름.
+        // 지금 예제에서는 별 차이가 없다.
+        // var는 함수 스코프를 가지며, let은 블록 스코프를 가집니다.
+        // 최신 코드에서는 let이나 const를 사용하는 것이 더 안전하고 권장됩니다.
+
+        // 질문2: form[name=inputForm] 같이 다른 형식에서도 이런 식으로 값을 가져와도 되나요. 
+        //        예를 들면 div[name=inputDiv] 같이요.
+        // document.querySelector() 함수는 나중에 추가된 함수입니다. 사용에 문제 없음.
+        // jQuery에서 document.querySelector() 대신 $로 바로 사용 가능.
+        // form[name=inputForm]는 비추천, 대신 querySelector("form[name='inputForm']") 사용 권장.
+    }
+</script>
+</body>
+</html>

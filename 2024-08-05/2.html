@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<script>
+    // 전역 변수
+    // let 선언은 자바에서의 변수 개념과 유사하다.
+    let globalName = "홍길동"; // let으로 선언된 전역 변수, 블록 스코프를 가집니다.
+    // var는 특정 객체의 멤버 속성으로 추가된다.
+    var aaa = "aaa"; // var로 선언된 전역 변수, window 객체의 멤버가 됩니다.
+    var aaa = "var로 중복 선언 가능"; // var는 중복 선언이 가능합니다. (같은 스코프에서 동일 이름으로 여러 번 선언 가능)
+
+    function test() {
+        // let으로 선언하면 블록 단위 scope를 가집니다.
+        let globalName = "test함수의 지역변수"; // test 함수 내에서만 유효한 지역 변수
+
+        // 함수 내부에서 var aaa="" 로 다시 선언하면 
+        // 외부에 선언한 변수에 접근하지 못합니다.
+        // var나 function은 함수 단위의 scope를 가집니다.
+        // 자바스크립트는 인터프리터 언어: 위치가 중요합니다.
+        console.log(aaa); // undefined를 출력합니다. (변수가 호이스팅되었지만 값은 할당되지 않음)
+        var aaa = "aaa2"; // test 함수 내에서 유효한 지역 변수로 재선언 및 값 할당
+
+        console.log("test 함수 호출 됨 ..."); // (출력: test 함수 호출 됨 ...)
+        console.log("test에서 globalName:", globalName); // (출력: test에서 globalName: test함수의 지역변수)
+
+        // 지역 변수
+        let localName = "아부지"; // test 함수 내에서만 유효한 지역 변수
+        console.log("test에서 localName:", localName); // (출력: test에서 localName: 아부지)
+
+        // 함수 내부에서 var로 선언하면 지역성을 갖지만
+        // 외부에서 window.userName 형식으로 접근 가능.
+        // var 없이 변수를 사용하면 지역성을 갖지 않음.
+        //var userName = "이순신";
+        window.userName = "강감찬"; // 전역 변수 userName을 window 객체에 추가
+        //var bbb = "bbb";
+        window.bbb = "bbb"; // 전역 변수 bbb를 window 객체에 추가
+        
+    }
+    // 호출하지 않은 함수는 실행되지 않습니다.
+    test(); // test 함수를 호출하여 내부 코드를 실행
+
+    console.log("globalName:", globalName); // 전역 변수 globalName의 값을 출력 (출력: globalName: 홍길동)
+    // 지역변수는 블록 외부에서 접근할 수 없습니다.
+    // let으로 선언한 변수는 지역성을 가집니다.
+    //console.log("test 외부에서 localName:" +  localName); // 오류 발생: localName은 test 함수 내에서만 접근 가능
+    console.log("외부에서 userName:" + userName); // window 객체의 userName 값을 출력 (출력: 외부에서 userName: 강감찬)
+
+    console.dir(window); // window 객체의 구조를 콘솔에 출력
+    console.log(bbb); // window 객체의 bbb 값을 출력 (출력: bbb)
+    console.log(aaa); // 전역 변수 aaa의 값을 출력 (출력: var로 중복 선언 가능)
+</script>
+</body>
+</html>

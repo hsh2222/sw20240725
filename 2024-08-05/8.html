@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 무작위 숫자 생성 함수
+        function getRandomNumber(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        // 1부터 10까지 무작위 숫자 생성
+        let randomNumber = getRandomNumber(1, 10);
+        let attempts = 0; // 시도 횟수 초기화
+        const maxAttempts = 5; // 최대 시도 횟수
+
+        // 숫자 저장 함수
+        function savebutton() {
+            const savenumber = Number(document.getElementById("usernumber").value); // 사용자가 입력한 숫자를 가져옴
+            console.log("현재 값", savenumber); // 사용자가 입력한 숫자를 콘솔에 출력
+
+            if (attempts < maxAttempts) { // 시도 횟수가 최대 횟수보다 작을 때만 실행
+                attempts++; // 시도 횟수 증가
+                const remainingAttempts = maxAttempts - attempts; // 남은 시도 횟수 계산
+
+                if (savenumber === randomNumber) {
+                    document.getElementById("result").textContent = "결과: 정답입니다! 남은 횟수: " + remainingAttempts;
+                } else if (savenumber < randomNumber) {
+                    document.getElementById("result").textContent = "결과: 틀렸습니다! 더 큰 값을 선택하세요! 남은 횟수: " + remainingAttempts;
+                } else if (savenumber > randomNumber) {
+                    document.getElementById("result").textContent = "결과: 틀렸습니다! 더 작은 값을 선택하세요! 남은 횟수: " + remainingAttempts;
+                }
+
+                if (attempts === maxAttempts && savenumber !== randomNumber) {
+                    document.getElementById("result").textContent = "기회가 끝났습니다. 정답은 " + randomNumber + "입니다.";
+                }
+            } else {
+                document.getElementById("result").textContent = "기회가 끝났습니다. 정답은 " + randomNumber + "입니다.";
+            }
+        } 
+        console.log("Random Number:", randomNumber); // 생성된 무작위 숫자 출력
+    </script>
+
+    <p>다음에서 시스템이 만든 숫자를 입력하세요</p>
+    <input type="number" id="usernumber">
+    <button onclick="savebutton()">입력</button> <!-- 함수 이름을 정확하게 호출 -->
+    <p id="result">결과: </p>
+</body>
+</html>

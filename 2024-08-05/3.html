@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        var aaa = null; // var로 선언한 변수에 null 값을 명시적으로 할당합니다.
+        var aaa2; // var로 선언한 변수로 초기화되지 않아서 undefined입니다.
+
+        // 선언 되었지만 값을 참조하지 않는 상태로 초기화
+        console.log("aaa", aaa); 
+        // aaa는 null로 초기화되었기 때문에 null 출력 (출력: aaa null)
+
+        // 변수 선언만 하고 값을 초기화하지 않으면 undefined
+        console.log("aaa2", aaa2); 
+        // aaa2는 선언만 되었고 값이 할당되지 않았으므로 undefined 출력 (출력: aaa2 undefined)
+
+        // 선언하지 않은 변수를 사용하면 ReferenceError: not defined
+        // console.log(ccc); 
+        // ccc는 선언되지 않았으므로 주석 해제 시 ReferenceError 발생
+    </script>
+</body>
+</html>
