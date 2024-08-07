@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Todo List</h1>
+    <p> 
+        할일 : 
+        <input type="text" id="text"> 
+        <button class="button">입력</button>
+    </p>
+    <ul class = "result"></ul>
+
+    <script>
+        const tex = document.querySelector("#text");
+        const btn = document.querySelector(".button");
+
+        const todoList = [
+            {no : 1, title : "일", done : false },
+            {no : 2, title : "이", done : false },
+            {no : 3, title : "삼", done : false },
+            {no : 4, title : "사", done : false }
+        ]
+        let todonext = 5;
+
+        function draw(){
+            let resul = document.querySelector(".result");
+            resul.innerHTML = "";
+
+            todoList.forEach(function(todo){
+
+                const newli = document.createElement("li");
+
+                const newcheckbox = document.createElement("input");
+                newcheckbox.setAttribute("type","checkbox");
+
+                const newdeletebutton = document.createElement("button");
+                newdeletebutton.innerText = "삭제";
+
+                const newtitle = document.createElement("span");
+                newtitle.innerText = todo.title;
+
+                newdeletebutton.onclick = function(){
+                    
+                    const sameno = todoList.findIndex(item => item.no === todo.no)
+
+                    if(sameno !== -1){
+                        todoList.splice(sameno,1);
+                        draw();
+                    }
+                };
+                newli.appendChild(newcheckbox);
+                newli.appendChild(newtitle);
+                newli.appendChild(newdeletebutton);
+                resul.appendChild(newli);
+            }
+             
+
+        )};
+        function append(){  
+                if (tex.value.trim() === ""){
+                    alert("할 일을 입력하세요");
+                    return;
+                }
+
+                todoList.push({
+                    no: todonext++,
+                    title : tex.value.trim(),
+                    done : false
+                });
+
+                draw();
+                tex.value = "";
+                
+        }
+        btn.onclick = function(){
+            append();
+        }
+        draw();
+    </script>
+</body>
+</html>

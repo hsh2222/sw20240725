@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>할 일 입력</h1>
+    <p>할일 : <input type="text" id="text"> <button class="button">입력</button> </p>
+    <p class="result">결과 :</p>
+
+
+    <script>
+        const btn = document.querySelector(".button");
+        const tex = document.querySelector("#text");
+        const res = document.querySelector(".result");
+
+        btn.onclick = function(){
+            res.innerHTML = `결과 : ${tex.value}`;
+            tex.value = ``;
+        }
+    </script>
+</body>
+</html>
