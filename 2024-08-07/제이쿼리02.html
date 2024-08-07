@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- jQuery 라이브러리를 외부 CDN에서 로드 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+    // 문서가 준비되면 jQuery 코드 실행
+    $(document).ready(function(){
+
+        // 첫 번째 버튼 클릭 시 실행
+        $("button").eq(0).click(function(){
+            $("p").hide(600); // 모든 <p> 요소를 600ms 동안 서서히 숨김
+            $("body").css({backgroundColor: ""}); // body의 배경색을 기본값으로 설정
+        });
+
+        // 두 번째 버튼 클릭 시 실행
+        $("button").eq(1).click(function(){
+            $("p").show(600); // 모든 <p> 요소를 600ms 동안 서서히 나타나게 함
+            $("body").css({backgroundColor: "orange"}); // body의 배경색을 주황색으로 설정
+            
+            // 두 번째 <p> 요소의 텍스트를 "환영합니다!"로 변경
+            $("p").eq(1)[0].innerText = "환영합니다!";
+            
+            // 첫 번째 <p> 요소의 텍스트를 "즐겁게 코딩하자"로 변경
+            $("p").eq(0).text("즐겁게 코딩하자");
+            
+            // 세 번째 <p> 요소의 텍스트, 스타일, 클릭 이벤트 설정
+            $("p").eq(2).text("Hello world")
+                .css({
+                    color: "green", // 텍스트 색상을 녹색으로 설정
+                    backgroundColor: "yellow" // 배경색을 노란색으로 설정
+                }).on('click',function() { // 클릭 이벤트 핸들러 설정
+                    alert(this.innerText); // 클릭 시 현재 요소의 텍스트를 알림으로 표시
+                    $(this).off('click'); // 클릭 이벤트를 한 번 실행한 후 제거
+                });
+
+            // 다섯 번째 <p> 요소의 텍스트를 "ㅇㅇㅇ"로 변경
+            $("p").eq(4).text("ㅇㅇㅇ");   
+        });
+
+        // 세 번째 버튼 클릭 시 실행
+        $("button").eq(2).click(function(){
+            $("p").show(100); // 모든 <p> 요소를 100ms 동안 서서히 나타나게 함
+            $("body").css({backgroundColor: "green"}); // body의 배경색을 녹색으로 설정
+
+            // 다섯 번째 <p> 요소의 텍스트를 "5번째 코드"로 변경
+            $("p").eq(4).text("5번째 코드");
+
+            // 네 번째 <p> 요소의 텍스트를 "5번째 코드"로 변경
+            $("p").eq(3).text("5번째 코드");
+        });
+    });
+    </script>
+</head>
+<body>
+    <h2>This is a heading</h2>
+    
+    <button>Click me to hide paragraphs</button> <!-- 첫 번째 버튼 -->
+    <button>다시 보이기</button> <!-- 두 번째 버튼 -->
+    <button>세번째</button> <!-- 세 번째 버튼 -->
+
+    <p>This is a paragraph.</p> <!-- 첫 번째 <p> 요소 -->
+    <p>This is another paragraph.</p> <!-- 두 번째 <p> 요소 -->
+    <p>새로 추가 한 p태그</p> <!-- 세 번째 <p> 요소 -->
+    <p>4</p> <!-- 네 번째 <p> 요소 -->
+    <p>5</p> <!-- 다섯 번째 <p> 요소 -->
+</body>
+</html>
