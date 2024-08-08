@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery에 많이 사용되는 메서드들</title>
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <!-- script가 body 태그 위에 있으면 $(document).ready()같은 진입점 필요. -->
+    <!-- jQuery에서 사용 할 스타일을 미리 정의 해 둔다 -->
+    <style>
+        li.redColor {
+            color: red; /* 텍스트 색상 빨강 */
+            text-decoration: underline; /* 밑줄 추가 */
+            font-size: 24pt; /* 폰트 크기 24pt */
+            font-weight: 900; /* 폰트 두께 900 */
+            background-color: aqua; /* 배경 색상 아쿠아 */
+        }
+    </style>
+</head>
+<body>
+
+    <div>
+        <h1 class="headding">Hello world</h1> <!-- 클래스명 "headding"을 가진 h1 태그 -->
+        <div class="navi">Home | Profile | Gallery</div> <!-- 클래스명 "navi"를 가진 div 태그 -->
+    </div>
+    <hr>
+    <div>
+        <button id="transKorBtn">한글로 변환</button> <!-- ID가 "transKorBtn"인 버튼 -->
+        <button id="toggleTodoList">목록 토글</button> <!-- ID가 "toggleTodoList"인 버튼 -->
+        <hr>
+        <button id="addClassBtn">클래스 적용</button> <!-- ID가 "addClassBtn"인 버튼 -->
+        <button id="removeClassBtn">클래스 제거</button> <!-- ID가 "removeClassBtn"인 버튼 -->
+        <button id="toggleClassBtn">토글 클래스</button> <!-- ID가 "toggleClassBtn"인 버튼 -->
+    </div>
+    <div>
+        제목: <input type="text" class="todoTitle"> <!-- 클래스명 "todoTitle"을 가진 input 태그 -->
+        <hr>
+        <ul class="todoList">
+            <li>코딩 하기</li>
+            <li>청소 하기</li>
+            <li>밥 하기</li>
+        </ul> <!-- 클래스명 "todoList"를 가진 ul 태그와 그 안의 li 태그들 -->
+    </div>
+
+<!-- 
+- **`text()`** 메서드를 사용하여 요소의 텍스트 내용을 변경 (`innerText` 속성)
+- **`html()`** 메서드를 사용하여 요소의 HTML 내용을 변경 (`innerHTML` 속성)
+- **`attr()`** 메서드를 사용하여 요소의 속성 값을 가져오거나 설정 (`setAttribute()` 메서드)
+- **`val()`** 메서들 이용해서 input 요소의 값을 가져오거나 설정 (`value` 속성)
+- **`css()`** 메서드를 사용해서 요소의 스타일을 설정하거나 값을 가져온다(style 속성)
+-->
+<script>
+    // head태그 아래에 있어도 jQuery진입점을 쓰는것이 좋다.
+    // ready()는 DOM 트리의 구조만 로드되어도 바로 실행 됨.
+    jQuery(document).ready(function() {
+        
+        // **`on()`** 메서드를 사용하여 이벤트를 등록
+        // 또는 **`bind()`** 메서드를 사용하여 이벤트를 등록
+        // **`click()`**, **`change()`**, **`keydown()`** 등
+        //$('#transKorBtn').on('click', function(event) { // 이벤트 등록 방법 1
+        //$('#transKorBtn').bind('click', function(event) { // 이벤트 등록 방법 2
+        $('#transKorBtn').click(function(event) { // 이벤트 등록 방법 3
+            // alert('Hello jQuery world'); // 경고창으로 "Hello jQuery world" 표시
+            // setter로 사용
+            $('.headding').text('안녕 세계'); // 클래스명 "headding"을 가진 요소의 텍스트를 "안녕 세계"로 변경
+            // getter로 사용
+            console.log( $('.headding').text() ); // 클래스명 "headding"을 가진 요소의 텍스트를 콘솔에 출력
+
+            $('.navi').html(`
+                <a href="">홈</a> | 
+                <a href="">갤러리</a> | 
+                <a href="">프로필</a>`
+            ); // 클래스명 "navi"를 가진 요소의 HTML 내용을 변경
+        });
+
+        $('.todoTitle').change((event) => { // 클래스명 "todoTitle"을 가진 input 요소의 값이 변경될 때 실행
+            // ${} : 템플릿 문자열 (바닐라 자바스크립트에서도 사용)
+            // $(요소) : jQuery 선택기
+            var newTitle = $(event.target).val(); // 변경된 값($(event.target).val())을 newTitle 변수에 저장
+            $('.todoList').append(`<li>${ newTitle }</li>`); // 클래스명 "todoList"를 가진 ul 태그에 새로운 li 태그 추가(append: 요소의 끝에 새로운 요소를 추가)
+            // input 초기화 및 포커스 (메서드 체인)
+            $(event.target).val("").focus(); // input 요소의 값을 빈 문자열로 설정
+        });
+
+        $('#toggleTodoList').click(function() { // ID가 "toggleTodoList"인 버튼 클릭 시 실행
+            $(".todoList").toggle('slow'); // 클래스명 "todoList"를 가진 요소를 천천히 토글
+        });
+
+        // 클래스 적용 메서드 연습 
+        $('#addClassBtn').click(function(event) { // ID가 "addClassBtn"인 버튼 클릭 시 실행
+            $('.todoList li').addClass('redColor'); // 클래스명 "todoList"를 가진 ul 태그 안의 모든 li 태그에 "redColor" 클래스 추가
+        });
+        $('#removeClassBtn').click(function(event) { // ID가 "removeClassBtn"인 버튼 클릭 시 실행
+            $('.todoList li').removeClass('redColor'); // 클래스명 "todoList"를 가진 ul 태그 안의 모든 li 태그에서 "redColor" 클래스 제거
+        });
+        $('#toggleClassBtn').click(function(event) { // ID가 "toggleClassBtn"인 버튼 클릭 시 실행
+            $('.todoList li').toggleClass('redColor'); // 클래스명 "todoList"를 가진 ul 태그 안의 모든 li 태그에 "redColor" 클래스를 토글
+        });
+    });
+</script>
+</body>
+</html>

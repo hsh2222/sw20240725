@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Custom jQuery Plugin Example</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <h2>Custom jQuery Plugin Example</h2>
+  <p>This is a paragraph with some text.</p> <!-- 첫 번째 p 태그 -->
+  <p>This is a paragraph with some text.</p> <!-- 두 번째 p 태그 -->
+  <button id="btn">p태그 스타일 변경</button> <!-- 첫 번째 버튼 -->
+  <hr>
+
+  <button id="btn2">li태그 스타일 변경</button> <!-- 두 번째 버튼 -->
+  <ul>
+    <li>Hello</li> <!-- 첫 번째 li 태그 -->
+    <li>World</li> <!-- 두 번째 li 태그 -->
+    <li>Korea</li> <!-- 세 번째 li 태그 -->
+    <li>Apple</li> <!-- 네 번째 li 태그 -->
+    <li>Banana</li> <!-- 다섯 번째 li 태그 -->
+    <li>Orange</li> <!-- 여섯 번째 li 태그 -->
+    <li>Mango</li> <!-- 일곱 번째 li 태그 -->
+  </ul>
+
+  <script>
+    // 사용자 정의 플러그인 "myFn" 추가
+    $.fn.myFn = function(bgcolor) {
+      this.each(function(i, dom) { // 선택된 요소 각각에 대해 함수 실행
+        if(i % 2 === 0) { // 인덱스가 짝수인 요소만 스타일 변경
+          $(this).css({ // 현재 요소에 대해 CSS 스타일 변경
+            backgroundColor: bgcolor ? bgcolor : "yellow", // 배경 색상을 인자로 받은 값 또는 기본값 "yellow"로 설정
+            fontWeight: 'bold' // 폰트 두께를 볼드로 설정
+          });
+        }
+      });
+    };
+
+    // 사용자 정의 플러그인 "myFn2" 추가
+    $.fn.myFn2 = function() {
+      this.colors = ['red', 'orange', 'blue', 'pink', 'green', 'brown', 'gray']; // 사용할 색상 배열 정의
+      console.log(this.colors); // 색상 배열을 콘솔에 출력
+      this.each((i, dom) => { // 선택된 요소 각각에 대해 함수 실행 (화살표 함수 사용)
+        $(dom).css({ // 현재 요소에 대해 CSS 스타일 변경
+          backgroundColor: this.colors[i], // 색상 배열에서 인덱스에 맞는 색상으로 배경 색상 설정
+          fontWeight: 'bold' // 폰트 두께를 볼드로 설정
+        });
+      });
+    };
+
+    // 버튼 클릭 시 플러그인 호출
+    $(document).ready(function() { // 문서가 준비되면 실행
+      $('#btn').click(function() { // 첫 번째 버튼 클릭 시
+        $('p').myFn(); // p 태그에 대해 myFn 플러그인 호출
+      });
+      $('#btn2').click(function() { // 두 번째 버튼 클릭 시
+        $('li').myFn2(); // li 태그에 대해 myFn2 플러그인 호출
+      });
+    });
+  </script>
+</body>
+</html>
