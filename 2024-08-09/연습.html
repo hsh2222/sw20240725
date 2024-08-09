@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>퍼즐맞추기 게임</title>
+    <style>
+        /* 기본 스타일 설정 */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* 좀 더 세련된 폰트 사용 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #e0e0e0; /* 부드러운 회색 배경 */
+        }
+    
+        /* 메인 컨테이너 스타일 */
+        .main-container {
+            text-align: center;
+            background-color: #ffffff; /* 흰색 배경 추가 */
+            padding: 20px;
+            border-radius: 12px; /* 부드러운 모서리 */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* 약간의 그림자 효과로 입체감 추가 */
+        }
+    
+        /* 헤더 스타일 */
+        h1 {
+            color: #333; /* 어두운 회색 텍스트 */
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+    
+        /* 퍼즐 컨테이너 스타일 */
+        .puzzle-container {
+            display: grid;
+            grid-template-columns: repeat(4, 80px); /* 4개의 열을 80px 크기로 설정 */
+            grid-template-rows: repeat(4, 80px); /* 4개의 행을 80px 크기로 설정 */
+            gap: 10px; /* 버튼 사이의 간격을 10px로 설정 */
+            margin-top: 20px;
+        }
+    
+        /* 퍼즐 버튼 스타일 */
+        .puzzle-button {
+            width: 80px; /* 버튼의 너비를 80px로 설정 */
+            height: 80px; /* 버튼의 높이를 80px로 설정 */
+            font-size: 28px; /* 버튼 텍스트 크기를 28px로 설정 */
+            cursor: pointer; /* 버튼에 마우스 커서를 올렸을 때 포인터로 변경 */
+            background-color: #3498db; /* 버튼의 배경색을 설정 (밝은 파란색) */
+            color: white; /* 버튼 텍스트 색상을 흰색으로 설정 */
+            border: none; /* 버튼 테두리를 제거 */
+            border-radius: 12px; /* 버튼 모서리를 더 둥글게 설정 */
+            display: flex; /* 버튼 내부 텍스트를 중앙 정렬하기 위해 Flexbox 사용 */
+            justify-content: center; /* 가로 중앙 정렬 */
+            align-items: center; /* 세로 중앙 정렬 */
+            transition: background-color 0.3s, transform 0.2s; /* 배경색과 크기 변화에 트랜지션 효과 추가 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 버튼에 그림자 효과 추가 */
+        }
+    
+        /* 버튼 호버 효과 */
+        .puzzle-button:hover {
+            background-color: #2980b9; /* 마우스를 올렸을 때 배경색을 어둡게 변경 */
+            transform: scale(1.05); /* 버튼을 살짝 키우는 효과 */
+        }
+    
+        /* 버튼이 클릭되었을 때의 효과 */
+        .puzzle-button:active {
+            background-color: #1c5985; /* 클릭 시 더 어두운 색으로 변경 */
+            transform: scale(0.95); /* 클릭 시 버튼이 살짝 줄어드는 효과 */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 그림자를 줄여서 버튼이 눌린 듯한 효과 */
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <h1>퍼즐맞추기 게임</h1> <!-- 페이지의 제목을 설정 -->
+        <div class="puzzle-container">
+            <!-- 여기에 퍼즐 버튼들이 들어갑니다 -->
+            <button class="puzzle-button">?</button>
+            <button class="puzzle-button">?</button>
+            <button class="puzzle-button">?</button>
+            <button class="puzzle-button">?</button>
+            <button class="puzzle-button">?</button>
+            <button class="puzzle-button">?</button>
+            <button class="puzzle-button">?</button>
+            <button class="puzzle-button">?</button>
+            <button class="puzzle-button">?</button>
+            <button class="puzzle-button">?</button>
+            <button class="puzzle-button">?</button>
+            <button class="puzzle-button">?</button>
+            <button class="puzzle-button">?</button>
+            <button class="puzzle-button">?</button>
+            <button class="puzzle-button">?</button>
+            <button class="puzzle-button">?</button>
+        </div>
+    </div>
+    <script>
+        const icon = ['🍎','🍎', '🍌','🍌', '🍇', '🍇', '🍉', '🍉', '🍒', '🍒', '🍓', '🍓', '🍑','🍑', '🍍', '🍍'];
+    
+        // shuffle 함수에 icon(이모지 배열)을 넣어 섞고, 섞인 배열을 shuffleicon에 저장
+        function shuffle(array) { 
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+        
+        const shuffleicon = shuffle(icon); // shuffle에 icon(이모지 배열)을 넣어 섞고, 섞인 배열을 저장
+    
+        const buttons = document.querySelectorAll('.puzzle-button'); // .puzzle-button 클래스를 가진 모든 버튼 요소를 선택하여 buttons 변수에 저장
+    
+        // 각 버튼에 섞인 이모지를 배치
+        buttons.forEach((button, index) => {
+            button.dataset.icon = shuffleicon[index]; // shuffleicon 배열에서 index에 해당하는 이모지를 버튼의 data-icon 속성에 저장
+            button.addEventListener('click', handleButtonClick); // 버튼이 클릭되었을 때 handleButtonClick 함수가 실행되도록 이벤트 리스너를 추가
+        });
+    
+        // 게임 시작 시 모든 이모지를 5초 동안 보여준 후 숨김
+        buttons.forEach(button => {
+            button.textContent = button.dataset.icon; // 이모지 표시
+        });
+    
+        setTimeout(() => {
+            buttons.forEach(button => {
+                button.textContent = '?'; // 5초 후에 이모지를 다시 숨김
+            });
+        }, 4000); // 4000ms = 4초
+    
+        let firstChoice = null; // 첫 번째 선택된 버튼을 추적
+        let secondChoice = null; // 두 번째 선택된 버튼을 추적
+        let matchCount = 0; // 맞춘 쌍의 개수를 추적 (16칸이니까 총 8개)
+        
+
+        let isClickable = true; // 버튼이 클릭 가능한 상태를 추적하는 변수
+
+        // handleButtonClick 함수: 버튼 클릭 시 호출되어 이모지를 표시하고, 두 버튼을 비교
+        function handleButtonClick(event) {
+            if (!isClickable) return; // 클릭이 불가능한 상태라면 함수 종료
+
+            const button = event.target; // event로 전달된 객체에서 클릭된 버튼 요소를 가져와 button 변수에 저장
+            button.textContent = button.dataset.icon; // button 요소의 data-icon 속성에 저장된 이모지를 버튼에 표시
+    
+            if (!firstChoice) { // 첫 번째 선택이 없다면
+                firstChoice = button; // 첫 번째 버튼으로 설정
+
+            } else { // 두 번째 선택인 경우
+                secondChoice = button; // 두 번째 버튼으로 설정
+                isClickable = false; // 두 번째 버튼을 선택했으므로 클릭을 일시적으로 불가능하게 설정
+
+                // 두 버튼의 이모지가 같은지 확인
+                if (firstChoice.dataset.icon === secondChoice.dataset.icon) {
+                    matchCount++; // 맞춘 쌍의 개수를 증가
+                    resetChoices(); // 선택 초기화
+                    isClickable = true; // 클릭 가능 상태로 복원
+
+                    // 모든 쌍을 맞췄다면 축하 메시지를 표시
+                    if (matchCount === 8) {
+                        setTimeout(() => alert('축하합니다! 모든 퍼즐을 맞췄습니다.'), 500);
+                    }
+                } else { // 이모지가 다르면
+                    setTimeout(() => {
+                        firstChoice.textContent = '?'; // 첫 번째 버튼의 이모지를 숨김
+                        secondChoice.textContent = '?'; // 두 번째 버튼의 이모지를 숨김
+                        resetChoices(); // 선택 초기화
+                        isClickable = true; // 클릭 가능 상태로 복원
+                    }, 1000); // 1초 후에 실행
+                }
+            }
+        }
+    
+        // resetChoices 함수: 선택된 두 버튼을 초기화하여 다음 선택을 준비
+        function resetChoices() {
+            firstChoice = null; // 첫 번째 선택 초기화
+            secondChoice = null; // 두 번째 선택 초기화
+        }
+    </script>
+    
+</body>
+</html>

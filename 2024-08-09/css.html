@@ -1,0 +1,47 @@
+<!DOCTYPE html> <!-- HTML 문서의 유형을 선언합니다 (HTML5 표준). -->
+<html> <!-- HTML 문서의 루트 요소를 시작합니다. -->
+<head> <!-- 메타데이터와 제목, 스타일을 포함하는 문서의 머리 부분을 정의합니다. -->
+    <title>반응형 웹 디자인 예제</title> <!-- 브라우저 탭에 표시될 문서의 제목을 정의합니다. -->
+    <style> <!-- 문서 내에서 CSS 스타일을 정의하기 위한 섹션을 시작합니다. -->
+        body {
+            font-family: Arial, sans-serif; /* 기본 글꼴을 Arial, sans-serif로 설정합니다. */
+            text-align: center; /* 본문 내용의 텍스트를 중앙 정렬합니다. */
+            margin: 0; /* 문서의 기본 상하좌우 여백을 제거합니다. */
+            padding: 0; /* 문서의 기본 상하좌우 패딩을 제거합니다. */
+        }
+
+        .container {
+            width: 100%; /* 컨테이너의 너비를 전체 너비로 설정합니다. */
+            max-width: 1200px; /* 컨테이너의 최대 너비를 1200px로 제한합니다. */
+            margin: 0 auto; /* 컨테이너를 수평으로 가운데 정렬합니다. */
+            padding: 20px; /* 컨테이너에 20px의 패딩을 추가합니다. */
+        }
+
+        .box {
+            background-color: #007bff; /* 박스의 배경색을 파란색으로 설정합니다. */
+            color: white; /* 박스 텍스트의 색상을 흰색으로 설정합니다. */
+            font-size: 24px; /* 박스 텍스트의 크기를 24px로 설정합니다. */
+            padding: 50px; /* 박스의 내부 여백을 50px로 설정합니다. */
+            margin: 20px; /* 박스의 바깥 여백을 10px로 설정합니다. */
+            flex: auto;
+            /*float: left;*/ /* 박스들을 왼쪽으로 떠서 배치합니다. */
+        }
+
+        /* 미디어 쿼리 */
+        @media (max-width: 767px) {
+            /* 화면 너비가 767px 이하일 때 적용되는 스타일 */
+            .box {
+                font-size: 16px; /* 박스 텍스트의 크기를 16px로 줄입니다. */
+                padding: 30px; /* 박스의 내부 여백을 30px로 줄입니다. */
+            }
+        }
+    </style>
+</head>
+<body> <!-- 웹 페이지의 본문 내용을 정의하는 섹션을 시작합니다. -->
+    <div class="container"> <!-- 박스들을 포함하는 컨테이너 요소를 정의합니다. -->
+        <div class="box">Box 1</div> <!-- 첫 번째 박스를 정의합니다. -->
+        <div class="box">Box 2</div> <!-- 두 번째 박스를 정의합니다. -->
+        <div class="box">Box 3</div> <!-- 세 번째 박스를 정의합니다. -->
+    </div>
+</body>
+</html> <!-- HTML 문서의 루트 요소를 종료합니다. -->
