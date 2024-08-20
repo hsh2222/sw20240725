@@ -14,21 +14,21 @@
 }
 
 .App-header {
-  background-color: #282c34;  /* 헤더의 배경색 */
+  background-color: #282c34;
   min-height: 150px;
-  color: white;  /* 헤더의 텍스트 색상 */
+  color: white;
 }
 
 .input-title {
-  background-color: #fd8803;  /* 입력 섹션의 배경색 */
+  background-color: #fd8803;
   min-height: 50px;
-  color: white;  /* 입력 섹션의 텍스트 색상 */
+  color: white;
 }
 
 .list-body {
-  background-color: #ffff00;  /* 리스트 섹션의 배경색 */
+  background-color: #ffff00;
   min-height: calc(100vh - 200px);
-  color: navy;  /* 리스트 섹션의 텍스트 색상 */
+  color: navy;
 }
 
 .list-body > div {
@@ -40,7 +40,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);  /* 리스트 섹션의 폰트 크기 */
+  font-size: calc(10px + 2vmin);
 }
 
 .table div {
@@ -48,7 +48,7 @@
 }
 
 .App-link {
-  color: #61dafb;  /* 링크 텍스트 색상 */
+  color: #61dafb;
 }
 
 @keyframes App-logo-spin {
@@ -59,4 +59,3 @@
     transform: rotate(360deg);
   }
 }
-
