@@ -1,3 +1,4 @@
+css코드 복사
 .App {
   text-align: center;
 }
@@ -14,21 +15,21 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #282c34;  /* 헤더의 배경색 */
   min-height: 150px;
-  color: white;
+  color: white;  /* 헤더의 텍스트 색상 */
 }
 
 .input-title {
-  background-color: #fd8803;
+  background-color: #fd8803;  /* 입력 섹션의 배경색 */
   min-height: 50px;
-  color: white;
+  color: white;  /* 입력 섹션의 텍스트 색상 */
 }
 
 .list-body {
-  background-color: #ffff00;
+  background-color: #ffff00;  /* 리스트 섹션의 배경색 */
   min-height: calc(100vh - 200px);
-  color: navy;
+  color: navy;  /* 리스트 섹션의 텍스트 색상 */
 }
 
 .list-body > div {
@@ -40,7 +41,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(10px + 2vmin);  /* 리스트 섹션의 폰트 크기 */
 }
 
 .table div {
@@ -48,7 +49,7 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: #61dafb;  /* 링크 텍스트 색상 */
 }
 
 @keyframes App-logo-spin {
@@ -59,3 +60,4 @@
     transform: rotate(360deg);
   }
 }
+
