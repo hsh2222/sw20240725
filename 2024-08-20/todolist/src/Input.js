@@ -30,15 +30,5 @@ const Input = ({onClickEvent}) => {
     );
 }
 
-// 대표 컴포넌트 하나만 모듈 등록
 export default Input;
 
-// const InputSub = () => {
-//     return (<>
-
-//     </>);
-// }
-
-// 여로 콤포넌트를 모듈로 등록 할때
-// export {Input, InputSub};
-// 불러올때 import {Input, InputSub} from "./Input"
