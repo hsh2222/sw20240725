@@ -6,10 +6,13 @@
     <title>Document</title>
 </head>
 <body>
-    <%-include('../inc/Top.ejs') %>
-    <hr />
-    <div class="container">
-        <h2>Profile</h2>
-    </div>
+    <h1>자동차 목록</h1>
+    <%
+    carList.forEach((car)=>{
+    %>
+        <p><%=car.name %></p>
+    <%
+    })
+    %>
 </body>
 </html>
