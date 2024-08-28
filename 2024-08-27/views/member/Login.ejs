@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- 페이지의 문자 인코딩을 UTF-8로 설정 -->
+    <meta charset="UTF-8">
+    <!-- 페이지가 다양한 장치에서 적절히 표시되도록 viewport 설정 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 페이지 제목을 "Document"로 설정 -->
+    <title>Document</title>
+</head>
+<body>
+    <!-- 외부 EJS 파일인 'Top.ejs'를 포함 -->
+    <%-include('../inc/Top.ejs') %>
+    <hr />
+    <!-- 콘텐츠를 담을 컨테이너 div -->
+    <div class="container">
+        <!-- 페이지의 주요 제목을 "Login"으로 설정 -->
+        <h2>Login</h2>
+        <!-- 로그인 폼 시작 -->
+        <form action="/login" method="post">
+            <table>
+                <tr>
+                    <!-- 사용자 ID 입력 필드 -->
+                    <th>ID</th>
+                    <td><input type="text" name="id" value="user01" /></td>
+                    <!-- 로그인 버튼 (두 줄을 차지함) -->
+                    <td rowspan="2">
+                        <input type="submit"  class="btn btn-primary" value="로그인" /> 
+                    </td>
+                </tr>
+                <tr>
+                    <!-- 비밀번호 입력 필드 -->
+                    <th>PASS</th>
+                    <td><input type="password" name="password" value="1234"/></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <!-- 자바스크립트 코드 시작 -->
+    <script>
+        // 쿠키 데이터를 가져와 디코딩
+        const cookieData = decodeURIComponent(document.cookie);
+        console.log(cookieData);
+        // 쿠키 데이터를 JSON 객체로 변환
+        const cookieObj = JSON.parse(cookieData.split("j:")[1]);
+        console.log("user name:", cookieObj.name);
+    </script>
+</body>
+</html>

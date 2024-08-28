@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- 페이지의 문자 인코딩을 UTF-8로 설정 -->
+    <meta charset="UTF-8">
+    <!-- 페이지가 다양한 장치에서 적절히 표시되도록 viewport 설정 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 페이지 제목을 "Document"로 설정 -->
+    <title>Document</title>
+</head>
+<body>
+    <!-- 외부 EJS 파일인 'Top.ejs'를 포함 -->
+    <%-include('../inc/Top.ejs') %>
+    <hr />
+    <!-- 콘텐츠를 담을 컨테이너 div -->
+    <div class="container">
+        <!-- 페이지의 주요 제목을 "Member"로 설정 -->
+        <h2>Member</h2>
+        <!-- 사용자 정보를 표시하는 문단 -->
+        <p>
+            <%= user.name %>님 반갑습니다 (<%= user.email %>)<br/>
+            <a href="/logout">Logout</a>
+        </p>
+        <!-- 회원 목록을 표시하는 테이블 -->
+        <table class="table">
+            <tr>
+                <!-- 테이블 헤더 (번호, 이름, 이메일) -->
+                <th>NO</th>
+                <th>NAME</th>
+                <th>EMAIL</th>
+            </tr>
+            <!-- 예시 데이터 행 -->
+            <tr>
+                <td>1</td>
+                <td>홍길동</td>
+                <td>hong@gmail.com</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- 페이지의 문자 인코딩을 UTF-8로 설정 -->
+    <meta charset="UTF-8">
+    <!-- 페이지의 제목을 "파일 업로드 테스트"로 설정 -->
+    <title>파일 업로드 테스트</title>
+</head>
+<body>
+    <!-- 페이지의 주요 제목을 "파일 업로드"로 설정 -->
+    <h1>파일 업로드</h1>
+    <br>
+    <!-- 파일 업로드 폼 시작 -->
+    <form action="/process/photo" method="post" enctype="multipart/form-data">
+        <table>
+            <!-- 파일 입력 필드를 위한 테이블 행 -->
+            <tr>
+                <!-- 파일 입력 필드에 대한 라벨 -->
+                <td><label for="photo">파일</label></td>
+                <!-- 파일을 선택할 수 있는 파일 입력 필드 (여러 개 선택 가능) -->
+                <td><input type="file" name="photo" id="photo" multiple></td>
+            </tr>
+        </table>
+        <!-- 폼 전송 버튼, 이름은 "전송" -->
+        <input type="submit" value="업로드" name="전송">
+    </form>
+    <!-- 파일 업로드 폼 끝 -->
+</body>
+</html>

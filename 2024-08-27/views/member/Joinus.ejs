@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- 페이지의 문자 인코딩을 UTF-8로 설정 -->
+    <meta charset="UTF-8">
+    <!-- 페이지가 다양한 장치에서 적절히 표시되도록 viewport 설정 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 페이지 제목을 "Document"로 설정 -->
+    <title>Document</title>
+</head>
+<body>
+    <!-- 외부 EJS 파일인 'Top.ejs'를 포함 -->
+    <%-include('../inc/Top.ejs') %>
+    <hr />
+    <!-- 콘텐츠를 담을 컨테이너 div -->
+    <div class="container">
+        <!-- 페이지의 주요 제목을 "회원 가입"으로 설정 -->
+        <h2>회원 가입</h2>
+        <!-- 회원가입 폼 시작 -->
+        <form action="/joinus" method="post">
+            <table class="table">
+                <tr>
+                    <!-- 사용자 ID 입력 필드 -->
+                    <th>ID</th>
+                    <td><input type="text" name="id" /></td>
+                </tr>
+                <tr>
+                    <!-- 비밀번호 입력 필드 -->
+                    <th>PASS</th>
+                    <td><input type="password" name="password" /></td>
+                </tr>
+                <tr>
+                    <!-- 성명 입력 필드 -->
+                    <th>성명</th>
+                    <td><input type="text" name="name"></td>
+                </tr>
+                <tr>
+                    <!-- 이메일 입력 필드 -->
+                    <th>이메일</th>
+                    <td><input type="email" name="EMAIL"></td>
+                </tr>
+                <tr>
+                    <!-- 가입 버튼 -->
+                    <td><input type="submit" value="가입"></td>
+                </tr>
+            </table>
+        </
